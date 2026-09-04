@@ -1,0 +1,45 @@
+{
+    "Home": {
+        "Name": "Valery A",
+        "Description": "Builder of software & engineering projects | Web • Embedded • IoT",
+        "Region": "Kyiv City, Ukraine",
+        "Contacts": "artyukhv2005@gmail.com",
+
+        "title": "Projects",
+        "t1": "LockedNet",
+        "n1": "Decentralized Anti-Blackout Ecosystem",
+        "t2": "Barycore",
+        "n2": "Ecosystem of Telegram agents for management",
+        "t3": "Coming soon..."
+    },
+
+    "p1": {
+        "nP": "Next Page",
+        "pP": "Previous Page",
+        "title": "BaryCore: Introduction",
+        
+        "t1": "Balancing a full-time job with my studies at the Faculty of Radiophysics is a real challenge. I spend most of my time away from home, without access to my PC. It was during these exact moments, whether in lectures or on lunch breaks, that I acutely felt the need to manage my projects remotely. I needed a highly convenient tool: something that would allow me to launch complex processes on my home PC with just a few clicks, directly from Telegram, where I spend the majority of my time. This is how the idea of an ecosystem of smart assistants, living and communicating entirely within a messenger, was born.",
+        "t2": "The project is named BaryCore. I wanted to convey the system's architecture through a physics analogy. In celestial mechanics, a barycenter is the center of mass of two or more bodies that orbit one another. In my ecosystem, the Telegram Technical Chat (TCh) acts as this \"center of gravity.\" All other components \"orbit\" it: they receive commands from the center, execute tasks on the periphery, and always return the results to this point of equilibrium. The \"Core\" suffix emphasizes that it acts as the unified engine of the system.",
+
+        "t3": "As mentioned above, the heart of the ecosystem is the Technical Chat (TCh) - a Telegram group chat that serves as the communication hub between the user and the executing entities. To understand how everything fits together, we must first define three key concepts:",
+        "q30": "Script: The software code, the \"fundamental unit of the system\", operating according to a predefined algorithm.",
+        "q31": "Peripheral Bot: The communication interface of a Script. This is the \"face\" living in Telegram that receives user commands and reports execution progress.",
+        "q32": "Executing Agent: The working component of a Script. These are the \"hands\" performing the actual tasks on the PC.",
+        "t4": "Strictly speaking, the division between Peripheral Bots and Executing Agents is more conceptual than technical, introduced for the sake of architectural clarity. The Bot and the Agent are simply two roles fulfilled by the same Script.",
+        
+        "t5": "Looking ahead, these Scripts will be capable of executing a wide range of functions, from local file editing to advanced cloud-based statistics aggregation. This is precisely why the project is termed an \"Ecosystem\" - the workload won't be handled by a single monolithic script, but by a multitude of smaller ones, distributed across roles known as Archetypes. Each archetype has its own scope of responsibility and specific system instructions, enabling it to clearly understand its role within the broader ecosystem.",
+        "t6": "Furthermore, given the varying complexity of tasks, Scripts are divided into two types based on their level of autonomy:",
+        "q60": "Static Scripts operate according to strict, pre-programmed algorithms and rules. They respond to specific user keywords. If a command is ambiguous or incompatible with the algorithm, they simply return an error (TCh feedback: \"Task unclear 💤\").",
+        "q61": "Dynamic Scripts are far more flexible: they lack rigid boundaries and operate in tandem with AI (the Google Gemini API). Each Dynamic Script embeds a System Instruction unique to its archetype. Instead of relying on keywords, they possess an arsenal of executable functions. Upon receiving a user request, the Script forms a Goal Instruction. It then sends this, alongside the System Instruction, to the AI, which must return an actionable execution algorithm. If an error occurs during execution, the Script can autonomously request that the AI adjust the algorithm.",
+
+        "n": "How does this work in practice?",
+        "t7": "The user posts a request in the TCh, tagging the required Bot. The Script continuously monitors Telegram via the API for incoming requests. Upon recognizing its identifier, the Script immediately begins executing the task, sending a confirmation (TCh feedback: \"Task accepted 🎯\"). To ensure that no command gets lost due to network issues, a dedicated Techbot oversees the process. If it doesn't detect a confirmation from the targeted Script within 30 seconds, it triggers a system failure alert.",
+        "t8": "In the next section, I will delve deeper into the Script Archetypes, their functions and scopes of responsibility, and the formulation of System and Goal Instructions. Subsequent chapters will sequentially break down the overall system architecture, fallback mechanisms, performance, and security."
+    },
+
+    "p2": {
+        "nP": "Next Page",
+        "pP": "Previous Page",
+        "title": ""
+    }
+}

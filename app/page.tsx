@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from 'next-themes';
 import { Moon, Sun } from 'lucide-react';
-import messagesUk from "./en.json";
+import messagesUk from "@/lang/BaryCore/en.json";
 
 const t = messagesUk.Home;
 
@@ -60,7 +60,7 @@ export default function Home() {
       
       <section id="Home" className="w-full relative bg-background">
         
-        {/*Кнопки*/}
+        {/* Кнопки */}
         <div className="absolute top-6 right-6 lg:top-8 lg:right-12 z-10 flex gap-5 bg-background/60 backdrop-blur-md px-4 py-2 rounded-full border border-border shadow-sm">
           <a
             href="https://www.linkedin.com/in/valerii-artiukh"
@@ -82,14 +82,14 @@ export default function Home() {
           </a>
           <button
             onClick={toggleTheme}
-            aria-label="Перемкнути темний режим"
+            aria-label="Перемкнути тему"
             className="hover:text-primary transition-colors duration-300 flex items-center justify-center"
           >
             {theme === "dark" ? <Sun size={22} /> : <Moon size={22} />}
           </button>
         </div>
 
-        {/*Банер*/}
+        {/* Банер */}
         <div className="relative w-full h-64 sm:h-80 md:h-100 bg-zinc-200 dark:bg-zinc-800">
           <Image
             src="/backlogo.png"
@@ -100,7 +100,7 @@ export default function Home() {
           />
         </div>
         
-        {/*Блок інформації*/}
+        {/* Блок інформації */}
         <div className="relative px-6 sm:px-12 md:px-24 lg:px-40 pb-16 w-full max-w-[1600px] mx-auto">
           <div className="absolute -top-20 sm:-top-24 left-6 sm:left-12 md:left-24 lg:left-40 w-36 h-36 sm:w-48 sm:h-48 rounded-full border-[6px] border-foreground bg-zinc-200 dark:bg-zinc-800 overflow-hidden shadow-sm">
             <Image
@@ -160,7 +160,7 @@ export default function Home() {
 
           {/* BaryCore*/}
           <Link 
-            href="/BaryCore" 
+            href="/BaryCore/uk/p1" 
             className="group flex items-center justify-between p-6 bg-[#0D1117] border border-border rounded-2xl transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1">
             <div className="flex flex-col gap-1.5 pr-4">
               <h3 className="text-xl font-bold group-hover:text-primary text-[#E6EDF3] duration-300">

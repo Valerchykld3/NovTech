@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-/* 1. Реєструємо твої кастомні кольори у системі Tailwind v4 (це замінює tailwind.config.ts) */
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -10,7 +9,7 @@
 
 @layer base {
 
-  /* LIGHT MODE */
+  /* light mode */
   :root {
     --background: #FFFFFF;
     --foreground: #1F2328;
@@ -18,7 +17,7 @@
     --border: #D0D7DE;
   }
 
-  /* DARK MODE */
+  /* dark mode */
   .dark {
     --background: #0D1117;
     --foreground: #E6EDF3;
@@ -26,7 +25,6 @@
     --border: #30363D;
   }
 
-  /* 2. Призначаємо глобальні стилі нативним CSS (це надійніше за @apply) */
   body {
     background-color: var(--background);
     color: var(--foreground);
