@@ -7,7 +7,7 @@ import { useTheme } from 'next-themes';
 import { Moon, Sun } from 'lucide-react';
 import messagesUk from '@/lang/BaryCore/uk.json';
 
-const t = messagesUk.p2;
+const t = messagesUk.bcp2;
 
 const ListItem = ({ children }: { children: React.ReactNode }) => (
   <li className="flex gap-4 items-start text-lg text-foreground/90 leading-relaxed">
@@ -41,6 +41,28 @@ export default function Home() {
                 <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-primary">
                     {t.title}
                 </h1>
+
+                <div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl mb-4 font-bold text-primary">{t.contents}</h2>
+          <ul className="flex flex-col gap-3 pl-2 sm:pl-6">
+            <li>
+              <Link href="#Ch1" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a1}</Link>
+            </li>
+            <li>
+              <Link href="#text2" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a2}</Link>
+            </li>
+            <li>
+              <Link href="#Ch2" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a3}</Link>
+            </li>
+            <li>
+              <Link href="#Ch3" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a4}</Link>
+            </li>
+            <li>
+              <Link href="#Ch4" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a5}</Link>
+            </li>
+          </ul>
+                </div>
+                
                 <p className="text-lg sm:text-xl text-foreground/80 leading-relaxed font-medium">
                     {t.w}
                 </p>
@@ -57,7 +79,7 @@ export default function Home() {
                 <div className="flex flex-col gap-8">
                     {/* Виконавець */}
                     <div className="border-l-2 border-primary pl-4 sm:pl-6 flex flex-col gap-4">
-                        <p className="text-lg sm:text-xl font-semibold text-foreground leading-relaxed">{t.t2}</p>
+                        <p id="text2" className="text-lg sm:text-xl font-semibold text-foreground leading-relaxed">{t.t2}</p>
                         <ul className="flex flex-col gap-3">
                             <ListItem>{t.q20}</ListItem>
                             <ListItem>{t.q21}</ListItem>

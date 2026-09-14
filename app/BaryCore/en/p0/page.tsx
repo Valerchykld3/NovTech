@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import messagesUk from '@/lang/BaryCore/en.json';
 
-const t = messagesUk.p0;
+const t = messagesUk.bcp0;
 
 export default function Home() {
     return (

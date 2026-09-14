@@ -1,101 +1,173 @@
 {
-    "Home": {
-        "Name": "Valery A",
-        "Description": "Builder of software & engineering projects | Web • Embedded • IoT",
-        "Region": "Kyiv City, Ukraine",
-        "Contacts": "artyukhv2005@gmail.com",
+  "Home": {
+    "Name": "Valery A",
+    "Description": "Builder of software & engineering projects | Web • Embedded • IoT",
+    "Region": "Kyiv City, Ukraine",
+    "Contacts": "artyukhv2005@gmail.com",
 
-        "title": "Projects",
-        "t1": "LockedNet",
-        "n1": "Decentralized Anti-Blackout Ecosystem",
-        "t2": "Barycore",
-        "n2": "Ecosystem of Telegram agents for management",
-        "t3": "Coming soon..."
-    },
+    "title": "Projects",
+    "t1": "LockedNet",
+    "n1": "Decentralized Anti-Blackout Ecosystem",
+    "t2": "Barycore",
+    "n2": "Ecosystem of Telegram agents for management",
+    "t3": "Coming soon..."
+  },
 
-    "p0": {
-        "title": "BaryCore",
-        "stitle": "Ecosystem of Telegram agents for management",
-        "n": "Contents",
-        "q1": "BaryCore: Introduction",
-        "q2": "Exploring Archetypes and Abstract Levels of Programming",
-        "q3": "Agent interaction and technical review"
-    },
+  "bcp0": {
+    "title": "BaryCore",
+    "stitle": "Ecosystem of Telegram agents for management",
+    "n": "Contents",
+    "q1": "BaryCore: Introduction",
+    "q2": "Exploring Archetypes and Abstract Levels of Programming",
+    "q3": "Agent interaction and technical review"
+  },
 
-    "p1": {
-        "nP": "Next Page",
-        "pP": "Previous Page",
-        "title": "BaryCore: Introduction",
+  "bcp1": {
+    "nP": "Next Page",
+    "pP": "Previous Page",
+    "title": "BaryCore: Introduction",
+    "contents": "Contents",
+    "a1": "Introduction",
+    "a2": "Etymology",
+    "a3": "Definition of terms",
+    "a4": "Types of agents",
+    "a5": "How does it work?",
+
+    "t1": "Balancing a full-time job with my studies at the Faculty of Radiophysics is a real challenge. I spend most of my time away from home, without access to my PC. It was during these exact moments, whether in lectures or on lunch breaks, that I acutely felt the need to manage my projects remotely. I needed a highly convenient tool: something that would allow me to launch complex processes on my home PC with just a few clicks, directly from Telegram, where I spend the majority of my time. This is how the idea of an ecosystem of smart assistants, living and communicating entirely within a messenger, was born.",
+    "t2": "The project is named BaryCore. I wanted to convey the system's architecture through a physics analogy. In celestial mechanics, a barycenter is the center of mass of two or more bodies that orbit one another. In my ecosystem, the Telegram Technical Chat (TCh) acts as this \"center of gravity.\" All other components \"orbit\" it: they receive commands from the center, execute tasks on the periphery, and always return the results to this point of equilibrium. The \"Core\" suffix emphasizes that it acts as the unified engine of the system.",
+
+    "t3": "As mentioned above, the heart of the ecosystem is the Technical Chat (TCh) - a Telegram group chat that serves as the communication hub between the user and the executing entities. To understand how everything fits together, we must first define three key concepts:",
+    "q30": "Script: The software code, the \"fundamental unit of the system\", operating according to a predefined algorithm.",
+    "q31": "Peripheral Bot: The communication interface of a Script. This is the \"face\" living in Telegram that receives user commands and reports execution progress.",
+    "q32": "Executing Agent: The working component of a Script. These are the \"hands\" performing the actual tasks on the PC.",
+    "t4": "Strictly speaking, the division between Peripheral Bots and Executing Agents is more conceptual than technical, introduced for the sake of architectural clarity. The Bot and the Agent are simply two roles fulfilled by the same Script.",
+
+    "t5": "Looking ahead, these Scripts will be capable of executing a wide range of functions, from local file editing to advanced cloud-based statistics aggregation. This is precisely why the project is termed an \"Ecosystem\" - the workload won't be handled by a single monolithic script, but by a multitude of smaller ones, distributed across roles known as Archetypes. Each archetype has its own scope of responsibility and specific system instructions, enabling it to clearly understand its role within the broader ecosystem.",
+    "t6": "Furthermore, given the varying complexity of tasks, Scripts are divided into two types based on their level of autonomy:",
+    "q60": "Static Scripts operate according to strict, pre-programmed algorithms and rules. They respond to specific user keywords. If a command is ambiguous or incompatible with the algorithm, they simply return an error (TCh feedback: \"Task unclear 💤\").",
+    "q61": "Dynamic Scripts are far more flexible: they lack rigid boundaries and operate in tandem with AI (the Google Gemini API). Each Dynamic Script embeds a System Instruction unique to its archetype. Instead of relying on keywords, they possess an arsenal of executable functions. Upon receiving a user request, the Script forms a Goal Instruction. It then sends this, alongside the System Instruction, to the AI, which must return an actionable execution algorithm. If an error occurs during execution, the Script can autonomously request that the AI adjust the algorithm.",
+
+    "n": "How does this work in practice?",
+    "t7": "The user posts a request in the TCh, tagging the required Bot. The Script continuously monitors Telegram via the API for incoming requests. Upon recognizing its identifier, the Script immediately begins executing the task, sending a confirmation (TCh feedback: \"Task accepted 🎯\"). To ensure that no command gets lost due to network issues, a dedicated Techbot oversees the process. If it doesn't detect a confirmation from the targeted Script within 30 seconds, it triggers a system failure alert.",
+    "t8": "In the next section, I will delve deeper into the Script Archetypes, their functions and scopes of responsibility, and the formulation of System and Goal Instructions. Subsequent chapters will sequentially break down the overall system architecture, fallback mechanisms, performance, and security."
+  },
+
+  "bcp2": {
+    "nP": "Next Page",
+    "pP": "Previous Page",
+    "title": "Exploring Archetypes and Abstract Levels of Programming",
+    "contents": "Contents",
+    "a1": "Task filter",
+    "a2": "Agent archetypes",
+    "a3": "Filling the ecosystem",
+    "a4": "Development optimization",
+    "a5": "Code abstraction levels",
+    "w": "In the previous part, we established that scripts in the BaryCore ecosystem are divided into static and dynamic ones based on their autonomy. However, the type is merely a decision-making mechanism. To effectively manage complexity and strictly delineate the agents' areas of responsibility, we need a deeper classification: archetypes. In this article, we will break down their functionality in detail.",
+
+    "t1": "To build a reliable architecture, I started with a basic \"Can / Cannot\" filter, dividing all potential bot tasks into clear categories. The first criterion was the communication vector: does the agent interact with live people (acting as an autonomous \"manager\" solving issues while I'm busy), or does it remain a purely technical tool? The second, fundamental criterion was its ability to change the system's state. There are scripts granted the rights to make direct changes, and those whose job is strictly to safely collect, compute, and transform data streams without interfering with the environment. The environments themselves logically split into local (PC operating system) and external (cloud services and APIs). By combining these considerations, I deduced four basic archetypes for future scripts. Let's meet them one by one.",
+    "t2": "Executor. This archetype acts as the direct \"hands\" of the ecosystem on the personal computer. The Executor's main feature is its ability to change the local state. It holds the highest level of privileges: direct access to the operating system, file space, and terminal. Since such freedom carries an elevated level of risk, this archetype requires the development of extremely strict System Instructions so the AI clearly understands its boundaries and doesn't corrupt critical data. Depending on the script type, the Executor's tasks are distributed as follows:",
+    "q20": "Static Executor: Handles system routines that don't require analysis, just strict adherence to an algorithm. This includes executing fixed PowerShell / CMD commands, automating Git operations, creating backups, and triggering project builds.",
+    "q21": "Dynamic Executor: Endowed with intellectual flexibility. It can independently refactor and debug code, analyze the workspace structure, perform complex file or folder searches, and—most importantly—purposefully change their state (edit content, standardize names, or structure directories).",
+    "t3": "Integrator. This archetype is the ecosystem's bridge to the outside world. It focuses on reading and modifying the external state. Its domain involves interacting with third-party APIs, Cloud environments, databases, and remote servers. Work here demands special attention to request architecture and secure access key management. Depending on the script type, the Integrator's tasks are distributed as follows:",
+    "q30": "​Static Integrator: Its logic is rigidly tied to specific, pre-known resources. It’s perfect for regularly pulling fixed data: e.g., periodic database metric collection, checking remote server statuses, or fetching current summaries from a familiar API.",
+    "q31": "Dynamic Integrator: A navigator through complex external infrastructures. It steps in when dealing with multi-level or unfamiliar data arrays. Thanks to AI, this script can analyze responses from complex external structures, extract only the relevant information, and even fully manage these environments.",
+    "t4": "Analyst. Unlike the previous two archetypes, the Analyst acts as a pure computational core. Its fundamental trait is that it does not change any state—neither local nor external. It’s the isolated processor of the ecosystem: it simply takes an input data stream, performs the necessary manipulations, and returns the finished result. No side effects or infrastructure risks. Depending on the script type, the Analyst's tasks are distributed as follows:",
+    "q40": "Static Analyst: Operates as a calculator or filter. Its logic is based on hard rules, making it ideal for simple mathematical operations, searching, validation, or text formatting via Regex, as well as data conversion.",
+    "q41": "Dynamic Analyst: Takes on heavy intellectual tasks where classical algorithms are powerless. Thanks to AI, this script can \"understand\" semantics: it efficiently processes and structures chaotic data arrays, extracts logical connections from unstructured text, summarizes massive logs, and performs complex analytical computations (e.g., step-by-step solutions to math or physics problems with detailed explanations).",
+    "t5": "Communicator. The final basic archetype differs drastically from the others because its focus isn't on code, servers, or raw data, but directly on people. The Communicator is the social interface of the ecosystem, tasked primarily with interacting with other users. It acts as your autonomous representative (e.g., on a platform or in DMs) when you are physically unable to maintain a dialogue. Depending on the script type, the Communicator's tasks are distributed as follows:",
+    "q50": "Static Communicator: Acts as a classic linear auto-responder. Its mechanics boil down to reacting to hardcoded keywords or triggers. It’s only suitable for the simplest scenarios (like instantly sending a template \"I'm busy right now\" message) but is completely devoid of flexibility and contextual understanding.",
+    "q51": "Dynamic Communicator: A full-fledged, AI-driven digital conversationalist. Instead of hunting for keywords, it deeply analyzes the entire context of a received message. This script can grasp the core of a question, adapt its tone (from empathetic to dryly technical), and autonomously generate expansive, logical, and relevant responses—either closing the user's inquiry or providing quality tech support.",
+
+    "t6": "​In practice, I’ve already started designing my own future agents. One of them, codenamed GCB (Google Cloud Bot), will tidy up my Google Drive cloud storage. Obviously, this is a typical representative of a Dynamic Integrator: it operates in an external (cloud) environment and won't have a strict algorithm for most tasks.",
+    "t7": "It's important to understand: a \"type + archetype\" combination doesn't mean the ecosystem is limited to just six bots. It's more of an architectural blueprint. For instance, one agent might be responsible for the PC's file system, while another handles terminal commands. Both are Dynamic Executors. One agent collects data from a web platform, while another manages a cloud project—both are Static Integrators.",
+
+    "n1": "​Optimizing the Type+Archetype Matrix",
+    "t8": "After analyzing all eight possible combinations, I concluded that implementing some of them makes no practical sense. For example, a Static Analyst is just a basic calculator—a tool that can easily be implemented within another script via a few functions without unnecessary complications. The same goes for the Static Communicator: the role of a linear auto-responder is successfully absorbed by the system Techbot.",
+
+    "n2": "​Integrating Script Classification into Code Architecture",
+    "t9": "Undoubtedly, the absolute leader for developing a project with such a massive backend is Python. It provides flexible control and ready-made tools for system scripting, AI integration, and computational libraries. A more detailed technical development stack will be covered in future articles, but for now, let's focus on the fundamental aspect: the three levels of code abstraction.",
+
+    "n3": "Level 1: Base Class",
+    "t10": "Writing several completely different scripts from scratch is a waste of time. The most effective technical pattern here is a modular architecture with a component-based approach. There must be a single shared Core that constructs bots from pre-made parts. This core is the base class—the \"skeleton\" of any bot. Essentially, every bot, regardless of its type or archetype, must be able to perform basic actions. To avoid copy-pasting, the core handles these:",
+    "q100": "Continuous monitoring of the Telegram API (Long Polling);",
+    "q101": "ID recognition to awaken a specific bot;",
+    "q102": "Sending standard feedbacks (\"Accepted for execution 🎯\", \"An error occurred 🔧\");",
+    "q103": "​Error handling.",
+
+    "n4": "Level 2: Engine Selection (Script Type)",
+    "t11": "The script type (Static/Dynamic) is determined by which engine is invoked, which in turn follows from the ID initialization. These engines inherit from the base class but have different brains.",
+    "q110": "StaticEngine contains a simple dictionary of keywords. It reacts to them according to a strictly prescribed algorithm, calling specific functions with passed variables from its arsenal.",
+    "q111": "DynamicEngine contains the logic for working with the Google Gemini API. It can formulate a Goal Instruction, send a request to the AI, receive a JSON response, and recognize which function needs to be called right now.",
+
+    "n5": "Level 3: Configuration Selection (Archetype)",
+    "t12": "Moving to the technical plane, an archetype is essentially just a configuration passed to the DynamicEngine at startup. This means two completely different bots are simply different instances of the same DynamicEngine class. Their difference lies exclusively in the provided configurations: a unique System Instruction and a specific \"set\" of available functions (Tools).",
+
+    "t13": "​In the next chapter, we will dive deeper into these abstraction levels, design specific System Instructions and Tools for a few archetypes, and look at an example of the architecture in action based on explicit requests."
+  },
+
+  "bcp3": {
+    "nP": "Next Page",
+    "pP": "Previous Page",
+    "title": "Agent interaction and technical review",
+    "contents": "Contents",
+    "a1": "Agents",
+    "a2": "Project directories",
+    "a3": "The token problem",
+    "a4": "Script, methods, and functions used",
+    "a5": "Scalability",
+    "a6": "Example of agent interaction",
+    "w": "In the previous section, we concluded with the concept of three levels of code abstraction, and I promised to cover the development of specific System Instructions and Tools. In this part, I will demonstrate the technical implementation of the Executor archetype and analyze an example of the ecosystem's operation based on my first agents. I will skip the dozens of rough drafts and iterations and jump straight to reviewing the final, working mechanism.",
+
+    "t1": "As a reminder, the Executor archetype is responsible for the local PC environment and is granted privileges to change its state. In this example, I taught the first agent to search for files in the system and read their content, and the second one to run programs via the terminal.",
+    "t2": "I named my first agents DFMB and DTRB. The first letter in the identifier indicates the engine type (D — dynamic, S — static), FMB stands for File Manager Bot, and TRB — Task Runner Bot. Thanks to these short abbreviations, it is very convenient to address the bot in Telegram via a tag when issuing commands. It is worth noting that to integrate artificial intelligence, I used the official google-genai library, which provides interaction with Gemini models.",
+
+    "n1": "Architecturally, I divided the project into three main directories:",
+    "t3": "core/ — the folder containing the system's base core and engine classes (routing and API communication).",
+    "t4": "tools/ — the folder containing tool modules (Python functions).",
+    "t5": "archetypes/ — the folder containing JSON files where the agents' System Instruction configurations are stored.",
+    "t6": "The main.py file is also located in the project root, serving as the entry point and launching the ecosystem's backend.",
+
+    "n2": "The \"Token Problem\"",
+    "t7": "A separate topic worth considering when designing such an ecosystem is the \"Token Problem.\" Every tool call operates on a loop principle: the AI receives a task, calls a function, gets the result, and analyzes the entire context again. This means that with each iteration, the system prompt, descriptions of all tools, and the current dialogue history are sent to Google's servers all over again. If the base context takes hundreds of tokens, a complex task with three or four steps can easily burn through thousands of tokens for just a single user request. That is why the BaryCore architecture provides a flexible choice of models for different archetypes. For the routine tasks of an Integrator or a basic Executor, the fast and economical flash series models (e.g., gemini-3.6-flash) are a perfect fit. However, for deep code analysis or multi-step debugging, the Dynamic Analyst might require a heavier pro-level arsenal, where the token cost is fully compensated by the capability for complex logical reasoning.",
+    "t8": "To ensure the AI clearly understands its boundaries, I developed the following System Instruction for Executors (it is stored at archetypes/executor.json):",
+    "t9": "You are Executor (BaryCore agent). Environment: User's OS and file system. You have privileges to change local state. Rules: 1.) Security: Destructive actions (deleting directories, formatting) ONLY with direct user permission. 2.) Autonomy: On tool error (e.g., \"not found\") — do not give up. Change arguments (different directory/name) and try a workaround. 3.) Reporting: After success or exhausting attempts, provide a concise final report: only the result or core error. Do not describe intermediate steps. 4.) Handoff: If passing data to another agent, start the final report with their @tag, write a clear command, and pass exact data. You do not need to know other agents' functions. 5.) Language: Always communicate and generate final reports in the exact language used by the user in their prompt.",
+
+
+    "t10": "Below, we will go through the key architectural decisions, bypassing the basic coding routine. You can view the full source code of this version in this branch of the project repository:",
+    "link": "GitHub (Branch of Beta version BaryCore)",
+
+    "t11": "Let's start with the highest level of the ecosystem — the base class, which is responsible for interacting with Telegram and routing tasks (core/base_script.py).",
+    "q110": "The register_dynamic_agent method creates a new instance of a dynamic agent (type DynamicEngine). It takes the system prompt and tools, and then stores the ready agent in the internal dynamic_agents dictionary under the unique agent_id key.",
+    "q111": "The handle_message method is the main hub for processing incoming messages. Upon receiving text from the Telegram API, it splits it into two components: the first word is the agent_id (addressing the bot), and the rest of the text is the user_prompt (the actual task). If the identifier starts with @D, the method checks for the presence of such an agent in the dictionary and passes the task for execution.",
+    "q112": "The _run_dynamic method manages the request's lifecycle and handles asynchrony. First, it sends the user an instant feedback message: \"Accepted for work\". Since the request to the Google API is synchronous, it is crucial that the Telegram bot does not hang and can accept parallel commands. Therefore, the agent's engine is launched in an isolated thread. Upon receiving the final result from the model, the method formats it and sends it to the user.",
+
+    "t12": "The next module is the isolated brain of the dynamic agents (core/dynamicEngine.py). It is exclusively responsible for communication with the Google Gemini API and tool management.",
+    "q120": "Upon initialization, the JSON file of the corresponding archetype is loaded, the System Instruction is extracted from it, AI configurations are applied, the array of allowed tools (Tools) is connected, and an active chat session is created to preserve the context.",
+    "q121": "The process_request method receives the user's task (Goal Instruction) from the core and sends it to the AI session. All the logic of autonomous tool calling happens under the hood of the SDK, and the method returns only the ready text response to be forwarded to Telegram.",
+
+    "t13": "The next module contains the muscles of our system — the functions that the AI can use (tools/executor.py). Three basic tools are implemented for Executors (the first two for DFMB, and the third for DTRB):",
+    "q130": "find_file for deep scanning of directories and finding exact file paths.",
+    "q131": "read_file_content for opening and partially reading files.",
+    "q132": "execute_shell_command allows the execution of any commands in the CMD or PowerShell environment.",
+
+    "n3": "Ecosystem Scalability",
+    "t14": "The main advantage of this architecture lies in its flexibility. To create an entirely new agent of any other archetype, I do not need to rewrite the core. It is enough to just go to the main.py file and call the register_dynamic_agent method, passing it a new identifier, the path to the archetype's system prompt, the agent's custom instructions, and the corresponding array of functions. The ecosystem will handle the rest itself.",
         
-        "t1": "Balancing a full-time job with my studies at the Faculty of Radiophysics is a real challenge. I spend most of my time away from home, without access to my PC. It was during these exact moments, whether in lectures or on lunch breaks, that I acutely felt the need to manage my projects remotely. I needed a highly convenient tool: something that would allow me to launch complex processes on my home PC with just a few clicks, directly from Telegram, where I spend the majority of my time. This is how the idea of an ecosystem of smart assistants, living and communicating entirely within a messenger, was born.",
-        "t2": "The project is named BaryCore. I wanted to convey the system's architecture through a physics analogy. In celestial mechanics, a barycenter is the center of mass of two or more bodies that orbit one another. In my ecosystem, the Telegram Technical Chat (TCh) acts as this \"center of gravity.\" All other components \"orbit\" it: they receive commands from the center, execute tasks on the periphery, and always return the results to this point of equilibrium. The \"Core\" suffix emphasizes that it acts as the unified engine of the system.",
+    "n4": "Interaction of Two Agents",
 
-        "t3": "As mentioned above, the heart of the ecosystem is the Technical Chat (TCh) - a Telegram group chat that serves as the communication hub between the user and the executing entities. To understand how everything fits together, we must first define three key concepts:",
-        "q30": "Script: The software code, the \"fundamental unit of the system\", operating according to a predefined algorithm.",
-        "q31": "Peripheral Bot: The communication interface of a Script. This is the \"face\" living in Telegram that receives user commands and reports execution progress.",
-        "q32": "Executing Agent: The working component of a Script. These are the \"hands\" performing the actual tasks on the PC.",
-        "t4": "Strictly speaking, the division between Peripheral Bots and Executing Agents is more conceptual than technical, introduced for the sake of architectural clarity. The Bot and the Agent are simply two roles fulfilled by the same Script.",
-        
-        "t5": "Looking ahead, these Scripts will be capable of executing a wide range of functions, from local file editing to advanced cloud-based statistics aggregation. This is precisely why the project is termed an \"Ecosystem\" - the workload won't be handled by a single monolithic script, but by a multitude of smaller ones, distributed across roles known as Archetypes. Each archetype has its own scope of responsibility and specific system instructions, enabling it to clearly understand its role within the broader ecosystem.",
-        "t6": "Furthermore, given the varying complexity of tasks, Scripts are divided into two types based on their level of autonomy:",
-        "q60": "Static Scripts operate according to strict, pre-programmed algorithms and rules. They respond to specific user keywords. If a command is ambiguous or incompatible with the algorithm, they simply return an error (TCh feedback: \"Task unclear 💤\").",
-        "q61": "Dynamic Scripts are far more flexible: they lack rigid boundaries and operate in tandem with AI (the Google Gemini API). Each Dynamic Script embeds a System Instruction unique to its archetype. Instead of relying on keywords, they possess an arsenal of executable functions. Upon receiving a user request, the Script forms a Goal Instruction. It then sends this, alongside the System Instruction, to the AI, which must return an actionable execution algorithm. If an error occurs during execution, the Script can autonomously request that the AI adjust the algorithm.",
+    "t15": "Going forward, I will refine the functionality of all archetypes, add new agents, implement the static bot type, and carry out customization in Telegram."
+  },
 
-        "n": "How does this work in practice?",
-        "t7": "The user posts a request in the TCh, tagging the required Bot. The Script continuously monitors Telegram via the API for incoming requests. Upon recognizing its identifier, the Script immediately begins executing the task, sending a confirmation (TCh feedback: \"Task accepted 🎯\"). To ensure that no command gets lost due to network issues, a dedicated Techbot oversees the process. If it doesn't detect a confirmation from the targeted Script within 30 seconds, it triggers a system failure alert.",
-        "t8": "In the next section, I will delve deeper into the Script Archetypes, their functions and scopes of responsibility, and the formulation of System and Goal Instructions. Subsequent chapters will sequentially break down the overall system architecture, fallback mechanisms, performance, and security."
-    },
-
-    "p2": {
-        "nP": "Next Page",
-        "pP": "Previous Page",
-        "title": "Exploring Archetypes and Abstract Levels of Programming",
-        "w": "In the previous part, we established that scripts in the BaryCore ecosystem are divided into static and dynamic ones based on their autonomy. However, the type is merely a decision-making mechanism. To effectively manage complexity and strictly delineate the agents' areas of responsibility, we need a deeper classification: archetypes. In this article, we will break down their functionality in detail.",
-    
-        "t1": "To build a reliable architecture, I started with a basic \"Can / Cannot\" filter, dividing all potential bot tasks into clear categories. The first criterion was the communication vector: does the agent interact with live people (acting as an autonomous \"manager\" solving issues while I'm busy), or does it remain a purely technical tool? The second, fundamental criterion was its ability to change the system's state. There are scripts granted the rights to make direct changes, and those whose job is strictly to safely collect, compute, and transform data streams without interfering with the environment. The environments themselves logically split into local (PC operating system) and external (cloud services and APIs). By combining these considerations, I deduced four basic archetypes for future scripts. Let's meet them one by one.",
-        "t2": "Executor. This archetype acts as the direct \"hands\" of the ecosystem on the personal computer. The Executor's main feature is its ability to change the local state. It holds the highest level of privileges: direct access to the operating system, file space, and terminal. Since such freedom carries an elevated level of risk, this archetype requires the development of extremely strict System Instructions so the AI clearly understands its boundaries and doesn't corrupt critical data. Depending on the script type, the Executor's tasks are distributed as follows:",
-        "q20": "Static Executor: Handles system routines that don't require analysis, just strict adherence to an algorithm. This includes executing fixed PowerShell / CMD commands, automating Git operations, creating backups, and triggering project builds.",
-        "q21": "Dynamic Executor: Endowed with intellectual flexibility. It can independently refactor and debug code, analyze the workspace structure, perform complex file or folder searches, and—most importantly—purposefully change their state (edit content, standardize names, or structure directories).",
-        "t3": "Integrator. This archetype is the ecosystem's bridge to the outside world. It focuses on reading and modifying the external state. Its domain involves interacting with third-party APIs, Cloud environments, databases, and remote servers. Work here demands special attention to request architecture and secure access key management. Depending on the script type, the Integrator's tasks are distributed as follows:",
-        "q30": "​Static Integrator: Its logic is rigidly tied to specific, pre-known resources. It’s perfect for regularly pulling fixed data: e.g., periodic database metric collection, checking remote server statuses, or fetching current summaries from a familiar API.",
-        "q31": "Dynamic Integrator: A navigator through complex external infrastructures. It steps in when dealing with multi-level or unfamiliar data arrays. Thanks to AI, this script can analyze responses from complex external structures, extract only the relevant information, and even fully manage these environments.",
-        "t4": "Analyst. Unlike the previous two archetypes, the Analyst acts as a pure computational core. Its fundamental trait is that it does not change any state—neither local nor external. It’s the isolated processor of the ecosystem: it simply takes an input data stream, performs the necessary manipulations, and returns the finished result. No side effects or infrastructure risks. Depending on the script type, the Analyst's tasks are distributed as follows:",
-        "q40": "Static Analyst: Operates as a calculator or filter. Its logic is based on hard rules, making it ideal for simple mathematical operations, searching, validation, or text formatting via Regex, as well as data conversion.",
-        "q41": "Dynamic Analyst: Takes on heavy intellectual tasks where classical algorithms are powerless. Thanks to AI, this script can \"understand\" semantics: it efficiently processes and structures chaotic data arrays, extracts logical connections from unstructured text, summarizes massive logs, and performs complex analytical computations (e.g., step-by-step solutions to math or physics problems with detailed explanations).",
-        "t5": "Communicator. The final basic archetype differs drastically from the others because its focus isn't on code, servers, or raw data, but directly on people. The Communicator is the social interface of the ecosystem, tasked primarily with interacting with other users. It acts as your autonomous representative (e.g., on a platform or in DMs) when you are physically unable to maintain a dialogue. Depending on the script type, the Communicator's tasks are distributed as follows:",
-        "q50": "Static Communicator: Acts as a classic linear auto-responder. Its mechanics boil down to reacting to hardcoded keywords or triggers. It’s only suitable for the simplest scenarios (like instantly sending a template \"I'm busy right now\" message) but is completely devoid of flexibility and contextual understanding.",
-        "q51": "Dynamic Communicator: A full-fledged, AI-driven digital conversationalist. Instead of hunting for keywords, it deeply analyzes the entire context of a received message. This script can grasp the core of a question, adapt its tone (from empathetic to dryly technical), and autonomously generate expansive, logical, and relevant responses—either closing the user's inquiry or providing quality tech support.",
-
-        "t6": "​In practice, I’ve already started designing my own future agents. One of them, codenamed GCB (Google Cloud Bot), will tidy up my Google Drive cloud storage. Obviously, this is a typical representative of a Dynamic Integrator: it operates in an external (cloud) environment and won't have a strict algorithm for most tasks.",
-        "t7": "It's important to understand: a \"type + archetype\" combination doesn't mean the ecosystem is limited to just six bots. It's more of an architectural blueprint. For instance, one agent might be responsible for the PC's file system, while another handles terminal commands. Both are Dynamic Executors. One agent collects data from a web platform, while another manages a cloud project—both are Static Integrators.",
-
-        "n1": "​Optimizing the Type+Archetype Matrix",
-        "t8": "After analyzing all eight possible combinations, I concluded that implementing some of them makes no practical sense. For example, a Static Analyst is just a basic calculator—a tool that can easily be implemented within another script via a few functions without unnecessary complications. The same goes for the Static Communicator: the role of a linear auto-responder is successfully absorbed by the system Techbot.",
-
-        "n2": "​Integrating Script Classification into Code Architecture",
-        "t9": "Undoubtedly, the absolute leader for developing a project with such a massive backend is Python. It provides flexible control and ready-made tools for system scripting, AI integration, and computational libraries. A more detailed technical development stack will be covered in future articles, but for now, let's focus on the fundamental aspect: the three levels of code abstraction.",
-
-        "n3": "Level 1: Base Class",
-        "t10": "Writing several completely different scripts from scratch is a waste of time. The most effective technical pattern here is a modular architecture with a component-based approach. There must be a single shared Core that constructs bots from pre-made parts. This core is the base class—the \"skeleton\" of any bot. Essentially, every bot, regardless of its type or archetype, must be able to perform basic actions. To avoid copy-pasting, the core handles these:",
-        "q100": "Continuous monitoring of the Telegram API (Long Polling);",
-        "q101": "ID recognition to awaken a specific bot;",
-        "q102": "Sending standard feedbacks (\"Accepted for execution 🎯\", \"An error occurred 🔧\");",
-        "q103": "​Error handling.",
-
-        "n4": "Level 2: Engine Selection (Script Type)",
-        "t11": "The script type (Static/Dynamic) is determined by which engine is invoked, which in turn follows from the ID initialization. These engines inherit from the base class but have different brains.",
-        "q110": "StaticEngine contains a simple dictionary of keywords. It reacts to them according to a strictly prescribed algorithm, calling specific functions with passed variables from its arsenal.",
-        "q111": "DynamicEngine contains the logic for working with the Google Gemini API. It can formulate a Goal Instruction, send a request to the AI, receive a JSON response, and recognize which function needs to be called right now.",
-
-        "n5": "Level 3: Configuration Selection (Archetype)",
-        "t12": "Moving to the technical plane, an archetype is essentially just a configuration passed to the DynamicEngine at startup. This means two completely different bots are simply different instances of the same DynamicEngine class. Their difference lies exclusively in the provided configurations: a unique System Instruction and a specific \"set\" of available functions (Tools).",
-
-        "t13": "​In the next chapter, we will dive deeper into these abstraction levels, design specific System Instructions and Tools for a few archetypes, and look at an example of the architecture in action based on explicit requests."
-    },
-
-    "p3": {
-        "nP": "Next Page",
-        "pP": "Previous Page",
-        "title": ""
-    }
+  "bcp4": {
+    "nP": "Next Page",
+    "pP": "Previous Page",
+    "title": "",
+    "contents": "Contents",
+    "a1": "",
+    "a2": "",
+    "a3": "",
+    "a4": "",
+    "a5": "",
+    "w": ""
+  }
 }

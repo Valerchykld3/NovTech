@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import messagesUk from '@/lang/BaryCore/en.json';
 
-const t = messagesUk.p1;
+const t = messagesUk.bcp1;
 
 export default function Home() {
   return (
@@ -28,7 +28,29 @@ export default function Home() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-primary">
               {t.title}
             </h1>
-            <p className="text-lg sm:text-xl text-foreground leading-relaxed font-medium">
+            
+        <div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl mb-4 font-bold text-primary">{t.contents}</h2>
+          <ul className="flex flex-col gap-3 pl-2 sm:pl-6">
+            <li>
+              <Link href="#start" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a1}</Link>
+            </li>
+            <li>
+              <Link href="#Ch1" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a2}</Link>
+            </li>
+            <li>
+              <Link href="#Ch2" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a3}</Link>
+            </li>
+            <li>
+              <Link href="#Ch3" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a4}</Link>
+            </li>
+            <li>
+              <Link href="#Ch4" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a5}</Link>
+            </li>
+          </ul>
+        </div>
+
+            <p id="start" className="text-lg sm:text-xl text-foreground leading-relaxed font-medium">
               {t.t1}
             </p>
         </section>
