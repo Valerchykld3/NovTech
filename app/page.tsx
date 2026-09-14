@@ -160,7 +160,7 @@ export default function Home() {
 
           {/* BaryCore*/}
           <Link 
-            href="/BaryCore/uk/p1" 
+            href="/BaryCore/en/p0" 
             className="group flex items-center justify-between p-6 bg-[#0D1117] border border-border rounded-2xl transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1">
             <div className="flex flex-col gap-1.5 pr-4">
               <h3 className="text-xl font-bold group-hover:text-primary text-[#E6EDF3] duration-300">

@@ -13,6 +13,15 @@
         "t3": "Coming soon..."
     },
 
+    "p0": {
+        "title": "BaryCore",
+        "stitle": "Ecosystem of Telegram agents for management",
+        "n": "Contents",
+        "q1": "BaryCore: Introduction",
+        "q2": "Exploring Archetypes and Abstract Levels of Programming",
+        "q3": "Agent interaction and technical review"
+    },
+
     "p1": {
         "nP": "Next Page",
         "pP": "Previous Page",

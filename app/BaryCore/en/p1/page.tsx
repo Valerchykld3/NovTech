@@ -11,11 +11,19 @@ export default function Home() {
 
         {/* Блок Main */}
         <section id="Main" className="flex flex-col gap-6">
-            <Link 
-              href="/BaryCore/en/p2" 
-              className="text-sm font-semibold text-primary hover:underline w-fit transition-all">
-              {t.nP} &rarr;
-            </Link>
+            {/* Посилання на наступну та попередню сторінку */}
+                <div className="flex justify-between items-center w-full mb-2">
+                    <Link 
+                        href="/BaryCore/en/p0" 
+                        className="text-sm font-semibold text-primary hover:underline w-fit transition-all">
+                        {t.pP} &larr;
+                    </Link>
+                    <Link 
+                        href="/BaryCore/en/p2" 
+                        className="text-sm font-semibold text-primary hover:underline w-fit transition-all">
+                        {t.nP} &rarr;
+                    </Link>
+                </div>
             
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-primary">
               {t.title}
