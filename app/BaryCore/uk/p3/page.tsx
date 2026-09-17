@@ -175,7 +175,7 @@ export default function Home() {
             </section>
 
             <section id="Ch10" className="flex flex-col gap-6">
-                <p className="text-lg sm:text-xl text-foreground">{t.t13}</p>
+                <p className="text-lg sm:text-xl text-foreground">{t.t15}</p>
             </section>
 
             {/* Блок nextPage */}
