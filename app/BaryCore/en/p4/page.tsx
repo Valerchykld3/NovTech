@@ -4,7 +4,7 @@ import Image from "next/image";
 import messagesUk from '@/lang/BaryCore/en.json';
 
 const t = messagesUk.bcp4;
-
+ 
 export default function Home() {
     return (
         <main className="min-h-screen bg-background text-foreground font-sans px-6 sm:px-12 pt-32 pb-24 max-w-4xl mx-auto flex flex-col gap-12">
