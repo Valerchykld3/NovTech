@@ -16,10 +16,15 @@
   "bcp0": {
     "title": "BaryCore",
     "stitle": "Ecosystem of Telegram agents for management",
+
     "n": "Contents",
     "q1": "BaryCore: Introduction",
     "q2": "Exploring Archetypes and Abstract Levels of Programming",
-    "q3": "Agent interaction and technical review"
+    "q3": "Agent interaction and technical review",
+    "q4": "Agent scaling and cloud service integration",
+
+    "link": "GitHub",
+    "w": "This BaryCore Beta-3 is a fully functional, open-source ecosystem. Anyone can grab the code, customize it, and spin up their own autonomous agents. While I will continue developing BaryCore for commercial purposes moving forward, this open-source foundation is yours to explore and build upon."
   },
 
   "bcp1": {
@@ -161,13 +166,67 @@
   "bcp4": {
     "nP": "Next Page",
     "pP": "Previous Page",
-    "title": "",
+    "title": "Agent scaling and cloud service integration",
     "contents": "Contents",
-    "a1": "",
-    "a2": "",
-    "a3": "",
-    "a4": "",
-    "a5": "",
-    "w": ""
-  }
+    "a1": "Final beta release",
+    "a2": "Updates to Executor archetype agents",
+    "a3": "Session quantization",
+    "a4": "Static agent type",
+    "a5": "Creation of Integrator archetype agents",
+    "a6": "Testing challenges",
+    "a7": "Creation of Analyst archetype agents",
+    "a8": "Communicator archetype",
+    "w": "Work on the final beta version is nearing completion. Most of the core features planned for the open-source version of the project have already been implemented. Anyone can take this code for further development or adapt it to their own needs. Key architectural concepts and setup instructions are detailed in the .README directory within the repository. In the future, I plan to gradually improve specific aspects of the ecosystem: the interaction interface, data security, simplification of API key integration, and so on. In this section, I will provide a partial overview of the new functionality. You can fully explore the current version of the project at the following link:",
+    "link": "GitHub",
+
+    "n1": "Updates to Executor archetype agents",
+    "t1": "Previously, only three basic functions were implemented for the Executor archetype, which is clearly insufficient for a fully functioning system. Now, the DFMB (File Manager Bot) agent, in addition to finding and reading files, can create new directories and files, populate them with content, copy, move, and delete objects, as well as retrieve information about the disk space occupied by these objects.",
+    "t2": "During the initial testing stages, DFMB made errors most frequently when searching for files. The task success rate was around 50%, and AI hallucinations occurred quite often. To overcome this issue, I applied two solutions. First, I added a new `list_directory` tool, which uses the `os.listdir` function to retrieve a list of all files and folders in a specified directory. Second, for navigating complex directories, I developed a system of \"beacons\"—README files that explicitly describe the structure and purpose of each nested folder. Thanks to this, the task execution accuracy reached 100%.",
+    "t3": "The DTRB (Task Runner Bot) agent, alongside its basic PowerShell operations, has been trained to view active PC processes, forcefully terminate specific processes, and gather information about current system resource usage.",
+
+    "n2": "Session quantization",
+    "t4": "While adding new features, I constantly faced the need to optimize token consumption. One logical and necessary solution was to close AI sessions. Previously, running the program involved opening a continuous AI session that lasted as long as the server was running. Because of this, all requests to different agents, system instructions, and tool call results constantly accumulated, forcing the AI to process a massive amount of unnecessary context every time. ",
+    "t5": "Thanks to the implementation of a `finally` block at the end of the `_run_dynamic` method, a new rule now applies: 1 task = 1 AI session. As soon as an agent completes the current task, the active session is automatically closed. Any new request initiates the opening of a new session without accumulated clutter from previous ones.",
+
+    "n3": "Static agent type",
+    "t6": "Finally, the static agent type has been implemented. Their essence and operating principles were described in detail in previous sections. In short: a `StaticEngine` class has been created (an analog to `DynamicEngine`, but with a static engine), along with a method for registration `register_static_agents`, and a method to launch them, `_run_static`. Configuring such agents is heavily simplified—you only need to specify a tag and a dictionary of triggers in a \"keyword - function\" format.",
+    "t7": "I had several options for implementing the logic for cases when an agent receives a message with multiple keywords. I settled on an approach where the functions tied to the keywords are simply executed sequentially.",
+
+    "n4": "Creation of Integrator archetype agents",
+    "t8": "The next stage was the development of Integrator archetype agents. Their task is to operate in cloud environments, modify the state of objects there, and extract necessary information from the cloud.",
+    "t9": "System Instruction for dynamic agents of this archetype:",
+    "t10": "\"Role: Integrator. Env: APIs/Cloud/External. Privileges: Modifies external state. Rules: 1. Security: Hide credentials. Explicit prompt requests equal permission for destructive actions. 2. Autonomy: On error, try alternative endpoints/args. 3. Report: Plain text only (NO tool calls). Concise final result/error. No intermediate steps. 4. Handoff: Format as \"@tag [command] [exact data]\". 5. Lang: Match user's prompt. 6. Context: Search and read relevant README files to map the external/cloud structure before acting.\"",
+    "t11": "Granting agents access to cloud services is done using the OAuth2 protocol. It is thanks to this that they have access to the user's Drive and Gmail, which became my primary targets.",
+    "t12": "DGDB (Google Drive Bot) is an agent that manages cloud storage. It manipulates files and folders similarly to how DFMB does it in the local system, but additionally supports operations for uploading files to the cloud and downloading them to the PC.",
+    "t13": "Another agent is SGRB (Gmail Reader Bot), which works with email. This is a static agent with hardcoded commands triggered by keywords. It supports three actions: displaying the senders and subjects of the latest unread emails, checking the overall mailbox status, and creating drafts for new messages.",
+
+    "n5": "Testing challenges",
+    "t14": "An important aspect of development is testing, which, unfortunately, presents some challenges. For instance, just to fix bugs in the DGDB agent, I had to run more than a dozen tests with various complex requests, especially including those that would hardly cross a regular user's mind. ",
+    "t15": "Every such test means used tokens, which directly converts into financial expenses. Since the project budget is limited, it is currently impossible to create a perfectly polished version of the system within an open-source initiative. Therefore, core efforts are directed toward the most essential things: ensuring the ecosystem's operability, correctly processing requests and returning responses, fine-tuning interactions between agents, and maximizing programmatic minimization of token expenditure.",
+
+    "n6": "Creation of Analyst archetype agents",
+    "t16": "Next, we move on to the Analyst archetype—agents that do not change any state but work and manipulate computational data. System Instruction:",
+    "t17": "\"Role: Analyst. Env: Isolated computation. Privileges: NO state changes (pure compute). Rules: 1. Scope: Read, compute, and structure data without side-effects. 2. Autonomy: On error, adjust analytical logic and retry. 3. Report: Plain text only. Return only computed result/structured data/error. 4. Handoff: Format as \"@tag [command] [exact data]\". 5. Lang: Match user's prompt.\"",
+    "t18": "DMSB (Math Solver Bot) is an Analyst archetype agent created to solve complex mathematical and physical problems. Its main feature is that it does not need auxiliary tools (Tools) at all. It is a dynamic agent, and the AI handles all the computational logic, returning the finished result to the user. The agent does not change the system state. ",
+    "t19": "The only difficulty was output formatting, as the standard Telegram interface is poorly suited for displaying mathematical expressions. To solve this problem, the AI was instructed to use available Unicode characters, wrap complex multi-line calculations in `<pre>` tags, and use HTML markup instead of the classic Markdown typically used by the AI.",
+    "t20": "The second agent of this archetype is DNIB (News Intercept Bot). It is capable of reading Telegram channels the user is subscribed to and structuring the retrieved information according to the request. For example, if you ask: \"@DNIB, what happened in Kyiv today?\", the agent will autonomously generate a brief summary of the latest news.",
+
+    "n7": "Communicator archetype",
+    "t21": "The final archetype is the Communicator. At the current stage of the ecosystem's development, creating agents of this archetype is not a priority task for me personally. In the future, such agents could act as automated technical support on my platforms and generate reports directly in Telegram."
+  },
+
+  "bcp5": {
+        "nP": "Next Page",
+        "pP": "Previous Page",
+        "title": "",
+        "contents": "Contents",
+        "a1": "",
+        "a2": "",
+        "a3": "",
+        "a4": "",
+        "a5": "",
+        "w": "",
+
+        "t1": ""
+    }
 }
