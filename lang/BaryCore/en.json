@@ -30,7 +30,7 @@
   "bcp1": {
     "nP": "Next Page",
     "pP": "Previous Page",
-    "title": "BaryCore: Introduction",
+    "title": "1. BaryCore: Introduction",
     "contents": "Contents",
     "a1": "Introduction",
     "a2": "Etymology",
@@ -60,7 +60,7 @@
   "bcp2": {
     "nP": "Next Page",
     "pP": "Previous Page",
-    "title": "Exploring Archetypes and Abstract Levels of Programming",
+    "title": "2. Exploring Archetypes and Abstract Levels of Programming",
     "contents": "Contents",
     "a1": "Task filter",
     "a2": "Agent archetypes",
@@ -113,7 +113,7 @@
   "bcp3": {
     "nP": "Next Page",
     "pP": "Previous Page",
-    "title": "Agent interaction and technical review",
+    "title": "3. Agent interaction and technical review",
     "contents": "Contents",
     "a1": "Agents",
     "a2": "Project directories",
@@ -166,7 +166,7 @@
   "bcp4": {
     "nP": "Next Page",
     "pP": "Previous Page",
-    "title": "Agent scaling and cloud service integration",
+    "title": "4. Agent scaling and cloud service integration",
     "contents": "Contents",
     "a1": "Final beta release",
     "a2": "Updates to Executor archetype agents",
