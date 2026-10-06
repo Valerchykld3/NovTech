@@ -217,6 +217,7 @@
   },
 
   "bcp5": {
+        "nP": "Next Page",
         "pP": "Previous Page",
         "title": "5. Scalability Architecture",
         "contents": "Contents",

@@ -25,6 +25,11 @@ export default function Home() {
                         className="text-sm font-semibold text-primary hover:underline w-fit transition-all">
                         {t.pP} &larr;
                     </Link>
+                    <Link 
+                        href="/BaryCore/en/p6" 
+                        className="text-sm font-semibold text-primary hover:underline w-fit transition-all">
+                        {t.nP} &rarr;
+                    </Link>
                 </div>
 
                 <div className="flex flex-col gap-4">

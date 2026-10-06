@@ -187,6 +187,7 @@
     },
 
     "bcp5": {
+        "nP": "Next Page",
         "pP": "Previous Page",
         "title": "5. Архітектура Масштабування ",
         "contents": "Contents",

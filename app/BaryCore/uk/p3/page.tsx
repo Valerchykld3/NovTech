@@ -119,19 +119,6 @@ export default function Home() {
                 <p className="text-lg sm:text-xl text-foreground/80 leading-relaxed font-medium">{t.t9}</p>
             </section>
 
-            <section id="Ch4" className="flex flex-col gap-6 items-start">
-                <p className="text-lg sm:text-xl text-foreground/80 leading-relaxed font-medium">{t.t10}</p>
-                <Link 
-                    href="https://github.com/Valerchykld3/BaryCore/tree/beta"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl hover:opacity-90 hover:shadow-lg transition-all duration-300 w-fit"
-                >
-                    {t.link}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-                </Link>
-            </section>
-
             <section id="Ch5" className="flex flex-col gap-8">
                 <p className="text-lg sm:text-xl text-foreground/80 leading-relaxed font-medium">{t.t11}</p>
                 <ul className="flex flex-col gap-10 list-none p-0 m-0">
