@@ -9,20 +9,21 @@
     "t1": "LockedNet",
     "n1": "Decentralized Anti-Blackout Ecosystem",
     "t2": "Barycore",
-    "n2": "Ecosystem of Telegram agents for management",
+    "n2": "Ecosystem of Agents for Workspace Management via Telegram",
     "t3": "Coming soon..."
   },
 
   "bcp0": {
     "title": "BaryCore",
-    "stitle": "Ecosystem of Telegram agents for management",
+    "stitle": "Ecosystem of Agents for Workspace Management via Telegram",
 
     "n": "Contents",
-    "q1": "BaryCore: Introduction",
-    "q2": "Exploring Archetypes and Abstract Levels of Programming",
-    "q3": "Agent interaction and technical review",
-    "q4": "Agent scaling and cloud service integration",
-    "q5": "Scalability Architecture",
+    "q1": "1. BaryCore: Introduction",
+    "q2": "2. Exploring Archetypes and Abstract Levels of Programming",
+    "q3": "3. Agent interaction and technical review",
+    "q4": "4. Agent scaling and cloud service integration",
+    "q5": "5. BaryCore Ground Model Test",
+    "q6": "6. BaryCore Sky Model development (Cloud Version of the Ecosystem)",
 
     "link": "GitHub",
     "w": "This is a fully functional, open-source ecosystem. Anyone can grab the code, customize it, and spin up their own autonomous agents. While I will continue developing BaryCore (user-friendly control interface, security, etc.) moving forward, this open-source foundation is yours to explore and build upon."
@@ -219,33 +220,15 @@
   "bcp5": {
         "nP": "Next Page",
         "pP": "Previous Page",
-        "title": "5. Scalability Architecture",
+        "title": "5. BaryCore Ground Model Test" 
+  },
+
+  "bcp6": {
+        "pP": "Previous Page",
+        "title": "6. BaryCore Sky Model development (Cloud Version of the Ecosystem)",
         "contents": "Contents",
-        "a1": "Hybrid Deployment Models",
-        "a2": "Security and Access Management",
-        "a3": "Tokenization and Transparent Billing",
-        "a4": "Agent Constructor",
-        "w": "When creating the BaryCore agent ecosystem as a personal tool for remotely managing processes on my PC, I designed its architecture to be scalable from the very beginning. The current version provides a powerful foundation for that. This led me to look further: how exactly could such a system evolve into a fully-fledged commercial product? Therefore, I present my own concept for this transformation, which I would develop in four main directions if I were to bring BaryCore to the commercial market.",
-        "link": "GitHub",
-
-        "n1": "Hybrid Deployment Models",
-        "t1": "Depending on an always-on PC is a limitation, but moving entirely to the cloud is not suitable for everyone either. Everything depends on the customer, their workflow, and the type of tasks they need to perform. Therefore, a fundamental step in scaling would be introducing ready-made ecosystem configurations (builds). Customers could choose how their system should operate or even combine the required functionality from all three options.",
-        "t101": "Cloud. 100% of the server is deployed in the cloud, allowing the ecosystem to operate continuously. This model does not include the Executor archetype, making it possible to work exclusively with external cloud services.",
-        "t102": "Distance. A hybrid model. The part of the server responsible for direct interaction with the local environment is hosted on the PC, while the other part — the brain — runs in the cloud. A dedicated microcontroller can remotely power the computer on and off when necessary. The model includes a deferred task queue and operates without task limitations.",
-        "t103": "Locale. 100% of the server is deployed locally. The ecosystem operates only while the PC is powered on, while also supporting deferred task queues and operating without any task limitations.",
-
-        "n2": "Security and Access Management",
-        "t2": "Management of all ecosystem capabilities would be moved to a secure Web interface. BaryCore would not be designed as a mass-market public product — instead, it would provide exclusive access through dedicated access keys. Each access key would contain the specific combination of configurations selected by the customer. If a client required something more specific, I would not build the entire system from scratch. Instead, I would develop additional tools or updates on top of their existing build. Each account would receive strong data encryption and a unified dashboard for securely connecting personal Telegram bots, cloud platforms, and third-party APIs.",
-
-        "n3": "Tokenization and Transparent Billing",
-        "t3": "Since AI interactions require careful cost optimization, the Web interface would include a full-fledged billing system operating under two models.",
-        "t301": "\"In\" Model. The user operates with developer-provided tokens. Once the balance is topped up with a certain amount, the ecosystem provides access to the corresponding amount of tokens.",
-        "t302": "\"Out\" Model. The user connects the ecosystem to their own Google AI Studio account and manages their balance directly through Google AI Studio.",
-
-        "n4": "Agent Constructor",
-        "t4": "This would be the main commercial value of such an upgrade. The user dashboard would provide direct access to an Agent Constructor. The interface would allow users to flexibly configure existing archetypes by modifying their System Instructions and available Tools, as well as create entirely new autonomous agents tailored to their own workflows. The customer could independently choose the agent's name, engine, required set of tools, and specific AI model for each task.",
-
-        "t5": "Although for routine tasks most startups today would find it easier to use existing cloud-based solutions, I believe the BaryCore architecture is still a strong fit for specialized infrastructures where remote code execution and direct access to a local file system are critical requirements.",
-        "t6": "For now, however, I am keeping the base version of the project publicly available on GitHub. I will continue using it as a reliable personal tool while shifting my focus toward new engineering projects."
+        "a1": "",
+        "w": "",
+        "link": "GitHub"
     }
 }

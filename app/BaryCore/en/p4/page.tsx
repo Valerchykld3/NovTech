@@ -168,7 +168,7 @@ export default function Home() {
                 <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t21}</p>
             </section>
 
-            {/* Блок nextPage (Без змін) */}
+            {/* Блок nextPage */}
             <section id="nP" className="mt-12 pt-8 border-t border-border flex justify-end">
                 <Link 
                     href="/BaryCore/en/p5" 
