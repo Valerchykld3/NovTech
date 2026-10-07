@@ -33,6 +33,9 @@ export default function Home() {
                     <li>
                         <Link href="/BaryCore/en/p5" className="text-sm font-semibold text-foreground hover:underline w-fit transition-all">&rarr; {t.q5}</Link>
                     </li>
+                    <li>
+                        <Link href="/BaryCore/en/p6" className="text-sm font-semibold text-foreground hover:underline w-fit transition-all">&rarr; {t.q6}</Link>
+                    </li>
                 </ul>
             </section>
 

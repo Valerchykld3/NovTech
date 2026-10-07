@@ -26,7 +26,7 @@
     "q6": "6. BaryCore Sky Model development (Cloud Version of the Ecosystem)",
 
     "link": "GitHub",
-    "w": "This is a fully functional, open-source ecosystem. Anyone can grab the code, customize it, and spin up their own autonomous agents. While I will continue developing BaryCore (user-friendly control interface, security, etc.) moving forward, this open-source foundation is yours to explore and build upon."
+    "w": "This is a fully functional, open-source ecosystem. Anyone can grab the code, customize it, and spin up their own autonomous agents. This open-source foundation is yours to explore and build upon."
   },
 
   "bcp1": {
@@ -227,8 +227,27 @@
         "pP": "Previous Page",
         "title": "6. BaryCore Sky Model development (Cloud Version of the Ecosystem)",
         "contents": "Contents",
-        "a1": "",
-        "w": "",
-        "link": "GitHub"
+        "a1": "The problem of a powered-off PC",
+        "a2": "Attempt I: Hybrid Infrastructure",
+        "a3": "A Full Move to the Cloud",
+        "a4": "What is the Difference Between the Models?",
+        "a5": "Final",
+        "w1": "The previous version, BaryCore Beta-3.2 (which remains in the main repository branch), had already gone through serious testing and reliably performed its tasks. It seemed like I could simply call it a day and wrap up the development. However, one significant engineering “burden” remained — the problem of a powered-off PC.",
+        "w2": "My primary workspace is a laptop. I do not always take this machine with me to work or university. For the local server of the ecosystem to operate, the computer had to remain powered on constantly. Leaving my laptop running all day while I was away from home was not exactly an ideal solution, while putting it into sleep mode broke the connection with the ecosystem.",
+        
+        "n1": "Attempt I: Hybrid Infrastructure",
+        "t1": "The initial plan was to build an alternative bridge architecture: introduce routers between Telegram and the local server in the form of a microcontroller and a dedicated cloud application. The cloud server would continuously listen to the network, while the microcontroller would wake the laptop from sleep using a “magic packet” (Wake-On-LAN) whenever a command arrived. However, reality had other plans. My laptop does not have full hardware support for Wake-On-LAN from sleep, and my ISP does not provide a static public IP address.",
+
+        "n2": "A Full Move to the Cloud",
+        "t2": "After making a turn by exp(iπ/2), I decided to move the entire ecosystem application to a virtual machine running Ubuntu Linux, which I had already rented from Google Cloud. Since my working part of the filesystem is fully synchronized with Google Drive, I do not have problems like “Oh, I need to get that file from my PC.” I am deeply integrated into Google’s services. If I need to test or run something, I can simply do it on the same VM.",
+        "t21": "As for the name? Calling the new development “BaryCore Cloud” seemed far too ordinary. So this model received the name BaryCore Sky, while the previous local-server model was renamed BaryCore Ground by analogy.",
+
+        "n3": "What is the Difference Between the Models?",
+        "t3": "Since the backend server is written in Python, around 99% of the code remained unchanged — the operation of the core does not depend on the operating system. The main adaptations affected the Executor archetype, for which the execution environment is critical. In their System Instruction, I changed the environment references from \"Env: Windows OS/FS\" to \"Env: Ubuntu Linux OS/FS\", replaced \"CMD/Powershell\" with \"Terminal: Bash\", and switched from Windows drive letters to absolute paths. I also found a bug in the Executor's tools: the send2trash library used by the delete_item function turned out to be incompatible with the Linux environment. The method was rewritten to permanently delete objects. Despite the strict rule in the System Instruction — “Destructive actions ONLY with explicit user permission” — I guess I will find out during actual use whether this decision was something to worry about. :)",
+
+        "t4": "You can explore the implementation of BaryCore Sky and compare it with BaryCore Ground in the open GitHub repository. The corresponding versions are separated into two branches, with detailed instructions for setup and API key configuration:",
+        "link": "GitHub",
+        "t5": "After testing BaryCore Sky remotely for the first time from the street — while the Ubuntu server on Google Cloud was running, it picked up a command from Telegram and, more importantly, returned the result to me — I realized that the mission was accomplished. The agent ecosystem I had set out to build was developed. So, it is time to confidently move on to the next projects.",
+        "t6": "A video overview of the new BaryCore model is attached below. Thank you for your attention!"
     }
 }

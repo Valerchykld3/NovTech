@@ -63,7 +63,7 @@ export default function Home() {
                         {t.w}
                     </p>
                     <Link 
-                        href="https://github.com/Valerchykld3/BaryCore"
+                        href="https://github.com/Valerchykld3/BaryCore/tree/BaryCore-Ground"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-xl hover:opacity-90 hover:shadow-lg transition-all duration-300 w-fit"
