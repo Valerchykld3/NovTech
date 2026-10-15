@@ -1,0 +1,65 @@
+{
+    "vpp0": {
+        "title": "VoltPulse",
+        "stitle": "Remote Power Monitoring System",
+
+        "n": "Contents",
+        "q1": "What is VoltPulse?",
+        "q2": "Coming soon...",
+
+        "link": "GitHub",
+        "w": "The repository contains two directories. The first holds the firmware for the device's operation and data transmission to a personal computer. The second contains a Python script that allows for reading and saving this data."
+    },
+
+    "vpp1": {
+        "nP": "Next Page",
+        "pP": "Previous Page",
+        "title": "What is VoltPulse?",
+        "contents": "Contents",
+        "a1": "Security and Energy Foundations",
+        "a2": "VoltPulse",
+        "a3": "Hardware Concept",
+        "a4": "Firmware and Integration",
+
+  "t1": "The energy and security situation in Kyiv has remained challenging for quite some time. October this year has brought plenty of familiar \"surprises\": residential buildings can be left without electricity for hours, sometimes even half a day.",
+  "t101": "Recently, a friend of mine shared a fairly simple idea: it would be great to have a device that could remotely check whether there is electricity at home. After all, many everyday decisions depend on it — from charging a phone to preparing dinner. The idea immediately caught my attention. I had already explored a similar concept while working on LockedNet — an autonomous \"Anti-Blackout\" ecosystem designed for use during power outages. However, back then, I focused primarily on the system architecture rather than the practical implementation of its hardware components. So this time, I decided to start practically from scratch.",
+  "t102": "I recently completed another project — BaryCore, an ecosystem of agents for remotely managing a workspace through Telegram. And it seemed like an excellent foundation for this new development. Why build a separate communication system and interface when an existing infrastructure can already receive user commands, process them, and return results? All I need is to extend it with a new agent responsible for monitoring the power supply.",
+  "t103": "The main question remained: where could I obtain reliable information about the state of my home's electrical supply? The obvious answer might seem to be power outage schedules. However, during emergency shutdowns and damage to energy infrastructure, the actual situation does not always match the published schedule. And I don't need a forecast or a probability. I need to know whether I'll be able to make some delicious mashed potatoes with cutlets and relax in a hot bath tonight, or whether I'll have to buy some sandwiches on my way home and dig out a washbasin from the balcony.",
+  "t104": "Therefore, the source of information must be a physical device directly connected to the home's electrical supply. It will detect the presence of power and transmit the corresponding status to the software system.",
+  "t105": "I currently plan to cover the development of VoltPulse in three articles. The first focuses on the concept and system architecture, the second on the hardware and device assembly, and the third on firmware development, integration with BaryCore, and practical testing. I don't plan to revisit the architecture of my previous projects in detail. If you're interested, you can explore them in the corresponding sections of NovTech.",
+
+  "n2": "VoltPulse",
+  "t2": "Meet VoltPulse — Remote Power Monitoring System. It is a compact, autonomous device designed to monitor the availability of electricity in a home's power supply. Its main task is to periodically detect the power status and transmit the collected data to BaryCore, allowing users to retrieve the information through Telegram. A new static-type Analytic Agent — SVP (VoltPulse) — will be created within BaryCore. Unlike general-purpose agents, it will have only one specialized function: reporting the current state of the home's power supply using the command \"@SVP voltage\".",
+  "t201": "This way, VoltPulse will not depend on power outage schedules or third-party forecasting services. Its own physical sensor will serve as the source of information, while BaryCore will act as the communication interface.",
+
+  "n3": "Hardware Concept",
+  "t3": "I have already revised the hardware concept several times. The components, measurement logic, and even the basic principle of detecting the power supply status have changed along the way. Initially, I considered measuring the actual voltage rather than simply obtaining a logical result of \"power available / power unavailable\". Eventually, I decided to settle on a simpler architecture. For this particular task, accurately measuring the household mains voltage is unnecessary.",
+  "t301": "The configuration presented below is still conceptual. During assembly and testing, individual components or circuit design decisions may change.",
+  "t302": "The device will be built around an ESP32-C3 microcontroller with Wi-Fi support and Deep Sleep capability. Its logic circuitry will operate at a regulated voltage of 3.3V. To reduce power consumption, the controller will spend most of its time in sleep mode. Every 300 seconds, it will wake up, determine the external power status, measure the battery voltage, transmit telemetry, and return to sleep. This approach should significantly reduce average energy consumption. Of course, information about the power supply will not be updated instantly, but I consider this delay acceptable for everyday household use.",
+  "t303": "The power source will be an 18650 lithium-ion battery with a nominal capacity of 3000 mAh. For preliminary calculations, I assume a usable capacity of 2700 mAh, although the actual value depends on various factors. Since the battery voltage changes during discharge, a Pololu S7V8F3 voltage regulator will be installed between the battery and the microcontroller. It can maintain a 3.3V output as long as the input voltage remains within its operating range.",
+  "t304": "Another task will be monitoring the remaining battery charge. For this purpose, the microcontroller's built-in ADC will measure the battery voltage through an appropriate resistive voltage divider. The firmware will provide an approximate charge percentage based on the nonlinear relationship between battery voltage and state of charge. I will use 4.2V as the upper reference point and 3.3V as the lower one.",
+  "t305": "Power consumption will still be present in Deep Sleep mode due to the voltage regulator and voltage divider. According to the documentation and preliminary calculations, the estimated current consumption is 75μA.",
+  "t306": "Let's estimate how long VoltPulse could theoretically operate without recharging.",
+  "q0306": "Active mode: ~20 seconds, ~100mA;",
+  "q1306": "Sleep mode: 300 seconds, ~75μA;",
+  "q2306": "Voltage regulator efficiency: ~85%.",
+  "q3306": "Average current I = [ (100 • 20) + (0.075 • 300) ] / (320 • 0.85) ≈ 7.43mA.",
+  "q4306": "Operating time t = 2700 mAh / 7.43mA ≈ 363 h ≈ 15 days. The actual operating time may be shorter due to lower real-world efficiency.",
+  "t307": "To monitor the external power supply, I plan to use a standard USB power adapter that converts 230V AC into an isolated 5V DC output. The ESP32-C3 itself will have no direct electrical connection to the 230V mains. Instead, the adapter's output status will be detected using an optocoupler.",
+  "t308": "An optocoupler consists of an LED and a phototransistor, with information transmitted between them optically. This provides galvanic isolation between the adapter's signal circuit and the microcontroller's logic circuitry.",
+  "t309": "On the input side of the optocoupler, the LED will be connected to the USB adapter output through a current-limiting resistor. With a supply voltage of 5V, an LED forward voltage drop of 1.2V, and a resistance of 1kΩ, the current will be I = 3.8/1000 = 3.8mA.",
+  "t310": "The output side of the optocoupler will be connected to the microcontroller's GPIO4. To establish the required logic levels, a pull-up to 3.3V is planned, activated during measurement through GPIO5.",
+  "t311": "The power detection logic will be inverted:",
+  "q0311": "× Power available = the adapter provides 5V = the optocoupler LED emits light, the phototransistor turns on and pulls GPIO4 to ground = a LOW signal is detected, corresponding to voltage = true.",
+  "q1311": "× Power unavailable = the phototransistor is off = thanks to the pull-up, GPIO4 reads a HIGH signal, corresponding to voltage = false.",
+
+  "n4": "Firmware and Integration",
+  "t4": "The microcontroller will operate in a repeating cycle. After waking from Deep Sleep, the device will initialize the necessary peripherals, read the logic level on GPIO4, and measure the battery voltage through the ADC. The resulting signal will be converted into a Boolean value called voltage, while the measured battery voltage will be converted into an approximate charge percentage.",
+  "t401": "Next, the microcontroller will establish a Wi-Fi connection and transmit both parameters to the cloud server. Once transmission is complete, the device will return to Deep Sleep for a specified period.",
+  "t402": "A lightweight service will be deployed on a virtual machine to receive data from VoltPulse. Its task will be to accept messages from the microcontroller and update a JSON state file. In addition to voltage and battery, the server will record the timestamp of the last successfully received telemetry update. This will help determine whether the reported power status is still current.",
+  "t403": "Access to the telemetry receiver will be restricted through device authentication, while data transmission will use a secure communication channel. For now, I do not plan to implement a full database or measurement history. For this particular task, storing only the latest received state is sufficient: each new transmission will replace the previous values.",
+  "t404": "On the BaryCore side, the changes will be minimal. A new method will be added to the Analytic Agents' tools module to handle requests from the SVP agent. It will read the current JSON state and generate a response for the user. Therefore, the BaryCore ecosystem itself will not directly poll the physical device. Instead, it will work with data already received and prepared by the server.",
+
+  "t5": "At this stage, the overall system concept has been established, its main components have been identified, and the device's expected battery life has been preliminarily estimated. The practical implementation comes next."
+    }
+}

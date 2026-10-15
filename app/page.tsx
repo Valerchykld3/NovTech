@@ -5,9 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTheme } from 'next-themes';
 import { Moon, Sun } from 'lucide-react';
-import messagesUk from "@/lang/BaryCore/en.json";
+import messagesUk from "@/lang/main.json";
 
-const t = messagesUk.Home;
+const t = messagesUk.main;
 
 const LinkedInIcon = () => (
   <svg
@@ -171,7 +171,24 @@ export default function Home() {
               </p>
             </div>
             <div className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 overflow-hidden border border-border">
-               <Image src="/bc.png" alt="BaryCore Logo" width={56} height={56} className="object-cover" />
+               <Image src="/bc2.png" alt="BaryCore Logo" width={56} height={56} className="object-cover" />
+            </div>
+          </Link>
+
+          { /* VoltPulse */ }
+          <Link 
+            href="/VoltPulse/en/p0" 
+            className="group flex items-center justify-between p-6 bg-[#0D1117] border border-border rounded-2xl transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1">
+            <div className="flex flex-col gap-1.5 pr-4">
+              <h3 className="text-xl font-bold group-hover:text-primary text-[#E6EDF3] duration-300">
+                {t.t3}
+              </h3>
+              <p className="text-sm text-[#E6EDF3] line-clamp-2">
+                {t.n3}
+              </p>
+            </div>
+            <div className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 overflow-hidden border border-border">
+               <Image src="/vp.png" alt="VoltPulse Logo" width={56} height={56} className="object-cover" />
             </div>
           </Link>
 
@@ -179,7 +196,7 @@ export default function Home() {
             className="group flex items-center justify-between p-6 bg-[#0D1117] border border-border rounded-2xl transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1">
             <div className="flex flex-col gap-1.5 pr-4">
               <h3 className="text-xl font-bold group-hover:text-primary text-[#E6EDF3] duration-300">
-                {t.t3}
+                {t.t4}
               </h3>        
             </div>
           </div>
