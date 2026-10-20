@@ -4,8 +4,9 @@
         "stitle": "Remote Power Monitoring System",
 
         "n": "Contents",
-        "q1": "What is VoltPulse?",
-        "q2": "Coming soon...",
+        "q1": "Concept of the idea",
+        "q2": "Prototyping and Testing",
+        "q3": "PCB Modeling",
 
         "link": "GitHub",
         "w": "The repository contains two directories. The first holds the firmware for the device's operation and data transmission to a personal computer. The second contains a Python script that allows for reading and saving this data."
@@ -61,5 +62,54 @@
   "t404": "On the BaryCore side, the changes will be minimal. A new method will be added to the Analytic Agents' tools module to handle requests from the SVP agent. It will read the current JSON state and generate a response for the user. Therefore, the BaryCore ecosystem itself will not directly poll the physical device. Instead, it will work with data already received and prepared by the server.",
 
   "t5": "At this stage, the overall system concept has been established, its main components have been identified, and the device's expected battery life has been preliminarily estimated. The practical implementation comes next."
+    },
+
+    "vpp2": {
+        "nP": "Next Page",
+        "pP": "Previous Page",
+        "title": "Prototyping and Testing",
+        "contents": "Contents",
+        "a1": "Device Prototyping",
+        "a2": "Firmware, Data Transmission, and Interface",
+        "a3": "Prototype Testing",
+        "a4": "PCB Design",
+        "w": "In the previous article, I introduced the VoltPulse concept, explored its main hardware components, and explained how they interact. Now it's time to move from theoretical architecture to practical implementation: assembling a prototype, writing the firmware, configuring data transmission, and conducting the first system tests.",
+
+  "n1": "Device Prototyping",
+  "t1": "For the initial implementation of VoltPulse, I decided to use a modular architecture, the principles of which I had already discussed in the previous article. This approach makes it possible to verify the functionality of individual components and the entire system before moving on to designing the final device.",
+  "t101": "During development, I built two versions of the prototype. The first was assembled on a universal prototyping board, with components soldered manually, electrical connections formed using solder, and external contacts provided for connecting additional modules. However, this construction turned out to be quite fragile, especially considering the need to repeatedly reconnect components during development.",
+  "t102": "So I eventually moved on to a second version — a circuit based on the same operating principles, but assembled on a solderless breadboard. This made it much easier to introduce changes, check connections, and experiment with individual components.",
+  "t103": "Both prototypes implement exactly the same logic. At this stage, their main purpose is not compactness or aesthetics, but verifying that the chosen architecture works as intended.",
+
+  "n2": "Firmware, Data Transmission, and Interface",
+  "t2": "The system can be divided into three levels: the physical VoltPulse device, a cloud-based Virtual Machine (VM), and the BaryCore ecosystem. Each performs a separate task, while communication between them is handled through network protocols.",
+  "t201": "The device's firmware essentially turns VoltPulse into a real sleepyhead. It spends most of its existence in Deep Sleep mode, minimizing battery consumption. Only periodically does the microcontroller wake up, perform the necessary measurements, transmit data, and return to sleep.",
+  "t202": "After each wake-up, the ESP32-C3 initializes the necessary peripheral modules. The first operation is measuring the battery voltage — before establishing a Wi-Fi connection, which helps eliminate the effect of voltage drops caused by significant current consumption on the measurement result. For this purpose, I use the analogReadMilliVolts() function provided by Espressif in the development environment. It returns the measured voltage at the ADC input in millivolts, taking the analog-to-digital converter's calibration into account. However, the ADC receives only half of the actual battery voltage after it passes through the resistive voltage divider. To restore the original battery voltage in volts, the result is additionally scaled by a factor of 2/1000.",
+  "t203": "The resulting value is passed to the BatteryChargeCalculation function, which estimates the remaining battery charge as a percentage. This introduces a separate challenge. The relationship between a lithium-ion battery's state of charge and its voltage is nonlinear, and its exact shape depends on the characteristics of the specific cell, temperature, load, and other factors. Building an accurate model would require lengthy experimental measurements over discharge cycles. However, such precision is not critical for my application. So I used publicly available reference data on typical lithium-ion battery characteristics. Based on this information, I created a set of reference points describing the relationship between voltage and charge level, stored them in an array, and implemented a linear interpolation algorithm between neighboring values. As a result, the function returns an approximate battery percentage. Of course, this estimate does not guarantee high accuracy. But for me, there is no fundamental difference between, say, 75% and 58% if I'm coming home in a few hours and the device could potentially keep running for several more days.",
+  "t204": "Next, the microcontroller sets GPIO5 to a HIGH logic level, activating the pull-up of the measurement input. Depending on the state of the optocoupler's phototransistor, GPIO4 receives one of two logic levels — HIGH or LOW. After reading the signal, GPIO5 stops supplying the control signal, and the resulting value is converted into a Boolean parameter called voltage. The detection logic is inverted: LOW indicates that external power is available, while HIGH indicates its absence. I explained the reasoning behind this decision in the previous article.",
+  "t205": "Once all the necessary measurements are complete, the device moves on to the next stage. The ESP32-C3 connects to the home Wi-Fi network. After establishing the connection, the microcontroller prepares a message containing two main parameters: voltage — the power supply status, and battery — the estimated remaining battery charge. These data must then be transmitted to the cloud-based virtual machine.",
+  "t206": "To provide access to the server-side components, I use the Caddy web server as a reverse proxy. It receives external HTTPS requests and forwards them to an internal service responsible for processing telemetry. It also enables secure TLS connections. Therefore, the ESP32-C3 sends data to a specified address, Caddy routes the request to the telemetry receiver, and the receiver processes the incoming message and updates the corresponding JSON state file.",
+  "t207": "The complete software implementation, including the firmware and server-side components, is available in the project's GitHub repository.",
+  "t208": "I didn't create a separate user interface for VoltPulse because, as I emphasized in the previous article, the necessary infrastructure already exists — BaryCore Sky. Since VoltPulse data are already stored on the same machine, all that remains is to organize their retrieval and delivery to the user. To accomplish this, I extended the Analyst Agents' tools module with a new function. It opens the JSON state file, retrieves the required parameters, and transforms them into a readable message, including the correct display of the last measurement timestamp.",
+  "t209": "Next, I created a new agent called SVP (VoltPulse) and gave it access to this function. To receive the status report, simply send the command \"@SVP voltage\".",
+
+  "n3": "Prototype Testing",
+  "t3": "After completing the assembly and programming, it was time to check whether the entire system worked as intended. I identified three main testing scenarios: verifying data transmission to the virtual machine, checking battery voltage measurements, and testing the detection of the home's power supply status.",
+  "t301": "For the first test, I created a separate copy of the firmware in which the battery and voltage values were hardcoded directly into the program. This allowed me to test the network functionality independently of the sensors and other hardware components. Only the ESP32-C3 development board was connected to the computer, without any additional components. After launching the firmware, the microcontroller established a connection to the server and transmitted the test values to the JSON state file.",
+  "t302": "For the second test, I returned the microcontroller to its rightful place — the fully assembled prototype. This time, the device was powered by its battery but was not connected to the USB power adapter. Therefore, the expected result had two parts: the system should report the absence of mains power while correctly transmitting the estimated battery charge. As a result, the SVP agent successfully displayed the received information in Telegram.",
+  "t303": "The final test involved connecting the prototype to a wall outlet through the USB power adapter. At the time of testing, electricity was available in the building. Therefore, the optocoupler was expected to switch to the corresponding state, while the microcontroller should detect a LOW logic signal and interpret it as voltage = true. The result:",
+
+  "n4": "PCB Design",
+  "t4": "The VoltPulse prototype has been successfully assembled and tested. However, using the device as a collection of modules, connecting wires, and a breadboard is not the most convenient solution for permanent operation. Therefore, the next stage will be designing a custom printed circuit board, ordering its manufacture, and manually soldering the components. This means the current circuit will require significant redesign. And it's not simply a matter of transferring the existing connections onto a PCB.",
+  "t401": "First, I plan to replace the ready-made development board with a standalone ESP32-C3-WROOM-02 module. Although this decision requires additional circuit design work, it will optimize the PCB layout and eliminate some of the auxiliary components installed on the development board.",
+  "t402": "Another issue to resolve is battery placement. One option is to keep the 18650 cell outside the main PCB and provide a suitable connector for attaching a battery holder. Alternatively, I could switch to a different lithium-ion battery format, allowing me to optimize the board's physical design.",
+  "t403": "The PCB will also need a USB connector for the external power adapter, which provides the signal indicating whether mains electricity is available.",
+  "t404": "Resolving these questions and designing the PCB itself will be the next stage of VoltPulse development."
+    },
+
+    "vpp3": {
+        "nP": "Next Page",
+        "pP": "Previous Page",
+        "title": "PCB Modeling"
     }
 }

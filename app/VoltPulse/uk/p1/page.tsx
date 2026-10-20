@@ -14,7 +14,7 @@ export default function Home() {
             {/* Посилання на наступну та попередню сторінку */}
                 <div className="flex justify-between items-center w-full mb-2">
                     <Link 
-                        href="/VoltPulse/en/p0" 
+                        href="/VoltPulse/uk/p0" 
                         className="text-sm font-semibold text-primary hover:underline w-fit transition-all">
                         {t.pP} &larr;
                     </Link>

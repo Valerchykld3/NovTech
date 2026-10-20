@@ -22,7 +22,10 @@ export default function Home() {
                         <Link href="/VoltPulse/en/p1" className="text-sm font-semibold text-foreground hover:underline w-fit transition-all">&rarr; {t.q1}</Link>
                     </li>
                     <li>
-                        <p className="text-sm font-semibold text-foreground hover:underline w-fit transition-all">&rarr; {t.q2}</p>
+                        <Link href="/VoltPulse/en/p2" className="text-sm font-semibold text-foreground hover:underline w-fit transition-all">&rarr; {t.q2}</Link>
+                    </li>
+                    <li>
+                        <Link href="/VoltPulse/en/p3" className="text-sm font-semibold text-foreground hover:underline w-fit transition-all">&rarr; {t.q3}</Link>
                     </li>
                 </ul>
             </section>

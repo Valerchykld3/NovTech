@@ -132,31 +132,15 @@ export default function Home() {
         
         {/* Заголовок секції */}
         <div className="mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground relative inline-block">
+          <h2 className="text-2xl sm:text-3xl font-bold text-primary relative inline-block">
             {t.title}
-            <span className="absolute -bottom-2 left-0 w-35 h-1 bg-primary rounded-full"></span>
+            <span className="absolute -bottom-2 left-0 w-30 h-1 bg-primary rounded-full"></span>
           </h2>
         </div>
+        <h3 className="text-2xl sm:text-3xl font-bold text-foreground relative inline-block mb-10">{t.title1}</h3>
 
-        {/*Сітка*/}
+        {/*Сітка1*/}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          {/*LockedNet*/}
-          <Link 
-            href="https://lockednetweb.vercel.app/" 
-            className="group flex items-center justify-between p-6 bg-[#0D1117] border border-border rounded-2xl transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1">
-            <div className="flex flex-col gap-1.5 pr-4">
-              <h3 className="text-xl font-bold group-hover:text-primary text-[#E6EDF3] duration-300">
-                {t.t1}
-              </h3>
-              <p className="text-sm text-[#E6EDF3] line-clamp-2">
-                {t.n1}
-              </p>
-            </div>
-            <div className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 overflow-hidden border border-border">
-               <Image src="/ln.ico" alt="LockedNet Logo" width={56} height={56} className="object-cover" />
-            </div>
-          </Link>
 
           {/* BaryCore*/}
           <Link 
@@ -200,6 +184,30 @@ export default function Home() {
               </h3>        
             </div>
           </div>
+        </div>
+
+        <div className="mb-10 mt-10">
+          <h3 className="text-2xl sm:text-3xl font-bold text-foreground relative inline-block">{t.title2}</h3>
+        </div>
+
+        {/*Сітка2*/}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/*LockedNet*/}
+          <Link 
+            href="https://lockednetweb.vercel.app/" 
+            className="group flex items-center justify-between p-6 bg-[#0D1117] border border-border rounded-2xl transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1">
+            <div className="flex flex-col gap-1.5 pr-4">
+              <h3 className="text-xl font-bold group-hover:text-primary text-[#E6EDF3] duration-300">
+                {t.t1}
+              </h3>
+              <p className="text-sm text-[#E6EDF3] line-clamp-2">
+                {t.n1}
+              </p>
+            </div>
+            <div className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 overflow-hidden border border-border">
+               <Image src="/ln.ico" alt="LockedNet Logo" width={56} height={56} className="object-cover" />
+            </div>
+          </Link>
         </div>
       </section>
     </div>
