@@ -209,6 +209,7 @@
     },
 
     "bcp6": {
+        "back": "Back",
         "pP": "Previous Page",
         "title": "6. Розробка моделі BaryCore Sky (версія для хмари)",
         "contents": "Contents",

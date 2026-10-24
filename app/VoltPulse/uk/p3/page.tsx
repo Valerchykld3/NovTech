@@ -11,17 +11,12 @@ export default function Home() {
 
             {/* Блок Main */}
             <section id="Main" className="flex flex-col gap-6">
-                {/* Посилання на наступну та попередню сторінку */}
+            {/* Посилання на наступну та попередню сторінку */}
                 <div className="flex justify-between items-center w-full mb-2">
-                    <Link
-                        href="/VoltPulse/uk/p2"
+                    <Link 
+                        href="/VoltPulse/uk/p2" 
                         className="text-sm font-semibold text-primary hover:underline w-fit transition-all">
                         {t.pP} &larr;
-                    </Link>
-                    <Link
-                        href="/VoltPulse/uk/p4"
-                        className="text-sm font-semibold text-primary hover:underline w-fit transition-all">
-                        {t.nP} &rarr;
                     </Link>
                 </div>
             
@@ -29,7 +24,98 @@ export default function Home() {
                     <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-primary leading-tight">
                         {t.title}
                     </h1>
+                    <div>
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl mb-4 font-bold text-primary">{t.contents}</h2>
+                        <ul className="flex flex-col gap-3 pl-2 sm:pl-6">
+                            <li>
+                                <Link href="#Ch1" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a1}</Link>
+                            </li>
+                            <li>
+                                <Link href="#Ch2" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a2}</Link>
+                            </li>
+                            <li>
+                                <Link href="#Ch3" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a3}</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.w}</p>
                 </div>
+            </section>
+
+            <hr className="border-border" />
+
+            <section id="Ch1" className="flex flex-col gap-6 mt-4">
+                <h2 className="text-2xl sm:text-3xl font-semibold text-primary border-b border-border pb-2 tracking-tight">{t.n1}</h2>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t1}</p>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t101}</p>
+                <div className="relative w-full aspect-video rounded-xl border border-border bg-zinc-50 dark:bg-[#0d1117] shadow-sm overflow-hidden my-2 transition-all duration-300 hover:border-primary hover:shadow-sm">
+                    <Image src="/vp_p3/esp_module.png" alt="esp_module" fill className="object-contain p-2" />
+                </div>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t102}</p>
+                <div className="relative w-full aspect-video rounded-xl border border-border bg-zinc-50 dark:bg-[#0d1117] shadow-sm overflow-hidden my-2 transition-all duration-300 hover:border-primary hover:shadow-sm">
+                    <Image src="/vp_p3/1.png" alt="Circuit" fill className="object-contain p-2" />
+                </div>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t103}</p>
+                <div className="relative w-full aspect-video rounded-xl border border-border bg-zinc-50 dark:bg-[#0d1117] shadow-sm overflow-hidden my-2 transition-all duration-300 hover:border-primary hover:shadow-sm">
+                    <Image src="/vp_p3/0603.png" alt="0603" fill className="object-contain p-2" />
+                </div>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t104}</p>
+                <div className="relative w-full aspect-video rounded-xl border border-border bg-zinc-50 dark:bg-[#0d1117] shadow-sm overflow-hidden my-2 transition-all duration-300 hover:border-primary hover:shadow-sm">
+                    <Image src="/vp_p3/tps_add.png" alt="tps_add" fill className="object-contain p-2" />
+                </div>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t105}</p>
+                <div className="relative w-full aspect-video rounded-xl border border-border bg-zinc-50 dark:bg-[#0d1117] shadow-sm overflow-hidden my-2 transition-all duration-300 hover:border-primary hover:shadow-sm">
+                    <Image src="/vp_p3/2.png" alt="Circuit" fill className="object-contain p-2" />
+                </div>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t106}</p>
+                <div className="relative w-full aspect-video rounded-xl border border-border bg-zinc-50 dark:bg-[#0d1117] shadow-sm overflow-hidden my-2 transition-all duration-300 hover:border-primary hover:shadow-sm">
+                    <Image src="/vp_p3/3.png" alt="Circuit" fill className="object-contain p-2" />
+                </div>
+                <div className="relative w-full aspect-video rounded-xl border border-border bg-zinc-50 dark:bg-[#0d1117] shadow-sm overflow-hidden my-2 transition-all duration-300 hover:border-primary hover:shadow-sm">
+                    <Image src="/vp_p3/4.png" alt="Circuit" fill className="object-contain p-2" />
+                </div>
+            </section>
+
+            <section id="Ch2" className="flex flex-col gap-6 mt-4">
+                <h2 className="text-2xl sm:text-3xl font-semibold text-primary border-b border-border pb-2 tracking-tight">{t.n2}</h2>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t2}</p>
+                <div className="relative w-full aspect-video rounded-xl border border-border bg-zinc-50 dark:bg-[#0d1117] shadow-sm overflow-hidden my-2 transition-all duration-300 hover:border-primary hover:shadow-sm">
+                    <Image src="/vp_p3/L_stage.png" alt="L_stage" fill className="object-contain p-2" />
+                </div>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t201}</p>
+                <div className="relative w-full aspect-video rounded-xl border border-border bg-zinc-50 dark:bg-[#0d1117] shadow-sm overflow-hidden my-2 transition-all duration-300 hover:border-primary hover:shadow-sm">
+                    <Image src="/vp_p3/PCBA.png" alt="PCBA" fill className="object-contain p-2" />
+                </div>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t202}</p>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t203}</p>
+                <div className="relative w-full aspect-video rounded-xl border border-border bg-zinc-50 dark:bg-[#0d1117] shadow-sm overflow-hidden my-2 transition-all duration-300 hover:border-primary hover:shadow-sm">
+                    <Image src="/vp_p3/3d.png" alt="3d" fill className="object-contain p-2" />
+                </div>
+                <div className="relative w-full aspect-video rounded-xl border border-border bg-zinc-50 dark:bg-[#0d1117] shadow-sm overflow-hidden my-2 transition-all duration-300 hover:border-primary hover:shadow-sm">
+                    <Image src="/vp_p3/3d_back.png" alt="3d_back" fill className="object-contain p-2" />
+                </div>
+            </section>
+
+            <section id="Ch3" className="flex flex-col gap-6 mt-4">
+                <h2 className="text-2xl sm:text-3xl font-semibold text-primary border-b border-border pb-2 tracking-tight">{t.n3}</h2>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t3}</p>
+            </section>
+
+            {/* Блок nextPage */}
+            <section id="nP" className="mt-12 pt-8 border-t border-border flex justify-end">
+                <Link 
+                    href="/" 
+                    className="group flex flex-col items-end gap-1 p-6 rounded-2xl border border-border bg-zinc-50 dark:bg-[#111612] hover:border-primary/50 hover:shadow-md transition-all duration-300 max-w-sm w-full">
+                    <span className="text-sm font-medium text-[#E6EDF3]">Back to main page</span>
+                    <div className="flex items-center gap-2">
+                        <h2 className="text-xl sm:text-2xl font-bold text-[#F85149] group-hover:underline">
+                            {t.back}
+                        </h2>
+                        <span className="text-primary transform group-hover:translate-x-1 transition-transform">
+                            &rarr;
+                        </span>
+                    </div>
+                </Link>
             </section>
         </main>
     );

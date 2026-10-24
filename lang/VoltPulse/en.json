@@ -9,7 +9,7 @@
         "q3": "PCB Modeling",
 
         "link": "GitHub",
-        "w": "The repository contains two directories. The first holds the firmware for the device's operation and data transmission to a personal computer. The second contains a Python script that allows for reading and saving this data."
+        "w": "The repository contains two directories. The first holds the firmware for the device's operation and data transmission to a personal computer. The second contains a Python script that allows reading and saving this data."
     },
 
     "vpp1": {
@@ -108,8 +108,40 @@
     },
 
     "vpp3": {
-        "nP": "Next Page",
+        "back": "Back",
         "pP": "Previous Page",
-        "title": "PCB Modeling"
+        "title": "PCB Modeling",
+        "contents": "Contents",
+        "a1": "From Modules to Circuit Design",
+        "a2": "PCB Layout and Routing",
+        "a3": "Final Steps",
+        "w": "In the previous chapters, I explored the VoltPulse architecture, assembled a prototype, implemented the software, and tested the system's operation. The device can now detect the presence of mains power, estimate the battery charge level, and transmit telemetry to a cloud server, where the collected data becomes accessible through the BaryCore ecosystem. The next stage of development was designing a custom printed circuit board — PCB. For this, I used KiCad, a software suite for designing electronic schematics and printed circuit boards. The process involved several stages, which I will cover in this chapter.",
+
+  "n1": "From Modules to Circuit Design",
+  "t1": "The first challenge was not simply transferring the existing connections from the breadboard onto a PCB, but rethinking the device's hardware design. The VoltPulse prototype consisted of ready-made modules, each of which already included some of the necessary electronics. Designing a custom PCB meant moving away from this modular approach and implementing the corresponding circuits directly on the board.",
+  "t101": "First, I replaced the development board with a standalone ESP32-C3-WROOM-02 module. It contains the microcontroller, the necessary radio-frequency components, and an antenna, but lacks the additional supporting circuitry normally provided on a ready-made development board.",
+  "picture1": "[Photo of the ESP module]",
+  "t102": "The schematic now includes a dedicated USB-C connector for programming the microcontroller through its built-in USB interface. I also added RESET and BOOT buttons for controlling the startup process, along with additional supporting components to ensure stable operation of the logic circuitry. Particular attention was paid to the 3.3V power rail. Capacitors were placed near the microcontroller to filter the power supply and compensate for short-term fluctuations in current consumption.",
+  "picture2": "[Image of schematic section 1]",
+  "t103": "Another change was the transition to surface-mount components (SMD). For resistors and ceramic capacitors, I chose the 0603 package size, which significantly reduced the board area required for passive components.",
+  "picture3": "[Image of the 0603 footprint]",
+  "t104": "Next comes the second major circuit block. The prototype used a ready-made Pololu S7V8F3 voltage regulator. For the final PCB, I decided to replace it with an integrated TPS63031 buck-boost converter, which will provide a regulated 3.3V output. The key advantage of a buck-boost architecture is its ability to both step down and step up the input voltage. This is important when powering the device from an 18650 battery, whose voltage changes throughout the discharge cycle. Unlike the ready-made module, however, the TPS63031 requires its own external supporting components. Following the manufacturer's documentation, I added a 1.5 μH inductor, input and output capacitors, and the necessary connections between the IC pins. This circuit became one of the most demanding parts of the PCB layout.",
+  "picture4": "[Image of the manufacturer's reference circuit]",
+  "t105": "I decided to keep the battery separate from the main PCB. To connect it, I included a two-pin screw terminal block that can be used with an external 18650 battery holder. In addition to the main power path, I implemented a battery voltage monitoring line through a resistive voltage divider, allowing the ESP32-C3 to continue estimating the remaining charge using its built-in ADC.",
+  "picture5": "[Image of schematic section 2]",
+  "t106": "The final functional block is responsible for detecting the presence of mains power. Its operating principle remains the same as in the prototype. An external USB power adapter converts 230V AC into isolated 5V DC, while a PC817 optocoupler makes it possible to detect the presence of this voltage without a direct electrical connection between the adapter's output and the microcontroller's logic circuitry.",
+  "picture6": "[Image of schematic section 3]",
+
+  "n2": "PCB Layout and Routing",
+  "t2": "Most components were assigned standard footprints from the KiCad libraries. However, I had to create a custom footprint for the inductor based on its physical dimensions and solder pads.",
+  "picture7": "[Image of the inductor footprint]",
+  "t201": "I placed the ESP32 module in the upper part of the board, leaving the required clearance around its antenna. The RESET and BOOT buttons, along with the microcontroller's supporting components, were positioned nearby. Below them, I arranged the power supply section around the TPS63031 and its supporting circuitry, while the battery terminal block was placed near the board's edge. On the right side, I positioned two USB-C connectors: one for programming the ESP32-C3 and the other for connecting the external mains power adapter. The optocoupler was placed between these connectors and the other main circuit blocks.",
+  "picture8": "[Image of the PCB layout]",
+  "t202": "In a schematic, two components can be connected by a single line regardless of their physical positions. On a PCB, things are more complicated: every connection has a physical geometry, and traces cannot simply cross one another on the same copper layer. For this version, I therefore chose a two-layer PCB. This allowed me to use both the top and bottom copper layers, with plated through-hole vias providing connections between them.",
+  "t203": "I paid particular attention to the TPS63031's supporting circuitry. The inductor and capacitors were placed close to the IC, while the power traces were made wider than ordinary signal traces. I also created a ground plane on the bottom layer of the PCB. This approach provides a common ground connection for the relevant circuit blocks without having to route a separate long trace to every ground pin.",
+  "picture9": "[Image of the 3D PCB model]",
+
+  "n3": "Final Steps",
+  "t3": "The Gerber files for PCB manufacturing have been prepared, along with the Bill of Materials (BOM) and Component Placement List (CPL) required for organizing the subsequent assembly process. The next task is to finalize the manufacturing files and order the physical PCB. Once the board arrives and is assembled, I plan to share the result in a LinkedIn post."
     }
 }

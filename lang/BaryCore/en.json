@@ -210,6 +210,7 @@
   },
 
   "bcp6": {
+        "back": "Back",
         "pP": "Previous Page",
         "title": "6. BaryCore Sky Model development (Cloud Version of the Ecosystem)",
         "contents": "Contents",

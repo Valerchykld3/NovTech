@@ -99,6 +99,23 @@ export default function Home() {
                     />
                 </div>
             </section>
+
+            {/* Блок nextPage */}
+            <section id="nP" className="mt-12 pt-8 border-t border-border flex justify-end">
+                <Link 
+                    href="/" 
+                    className="group flex flex-col items-end gap-1 p-6 rounded-2xl border border-border bg-zinc-50 dark:bg-[#111612] hover:border-primary/50 hover:shadow-md transition-all duration-300 max-w-sm w-full">
+                    <span className="text-sm font-medium text-[#E6EDF3]">Back to main page</span>
+                    <div className="flex items-center gap-2">
+                        <h2 className="text-xl sm:text-2xl font-bold text-[#F85149] group-hover:underline">
+                            {t.back}
+                        </h2>
+                        <span className="text-primary transform group-hover:translate-x-1 transition-transform">
+                            &rarr;
+                        </span>
+                    </div>
+                </Link>
+            </section>
         </main>
     )
 }

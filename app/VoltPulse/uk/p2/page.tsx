@@ -46,6 +46,7 @@ export default function Home() {
                             </li>
                         </ul>
                     </div>
+                    <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.w}</p>
                 </div>
             </section>
 
