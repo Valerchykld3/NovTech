@@ -8,8 +8,9 @@
         "q2": "Prototyping and Testing",
         "q3": "PCB Modeling",
 
-        "link": "GitHub",
-        "w": "The repository contains two directories. The first holds the firmware for the device's operation and data transmission to a personal computer. The second contains a Python script that allows reading and saving this data."
+        "w1": "VoltPulse is a compact IoT device designed for the remote monitoring of mains power availability and the transmission of data to a remote server, providing access to information via Telegram. VoltPulse is optimized for autonomous, energy-efficient operation in environments with unstable power supply.",
+        "w2": "The repository contains two directories. The first holds the firmware for the device's operation and data transmission to a personal computer. The second contains a Python script that allows reading and saving this data.",
+        "link": "GitHub"
     },
 
     "vpp1": {

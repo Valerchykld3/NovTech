@@ -55,6 +55,8 @@ export default function Home() {
 
   if (!mounted) return null;
 
+  const cryptoAddress = "TLM4Roqw97VatrcZPkzH3QVLyJ4CptyV2R";
+
   return (
     <div className="space-y-10 md:space-y-16 pb-16">
       
@@ -193,8 +195,8 @@ export default function Home() {
         {/*Сітка2*/}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/*LockedNet*/}
-          <Link 
-            href="https://lockednetweb.vercel.app/" 
+          <div
+            /*href="https://lockednetweb.vercel.app/"*/ 
             className="group flex items-center justify-between p-6 bg-[#0D1117] border border-border rounded-2xl transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:-translate-y-1">
             <div className="flex flex-col gap-1.5 pr-4">
               <h3 className="text-xl font-bold group-hover:text-primary text-[#E6EDF3] duration-300">
@@ -207,7 +209,23 @@ export default function Home() {
             <div className="w-14 h-14 rounded-xl flex items-center justify-center shrink-0 overflow-hidden border border-border">
                <Image src="/ln.ico" alt="LockedNet Logo" width={56} height={56} className="object-cover" />
             </div>
-          </Link>
+          </div>
+        </div>
+      </section>
+
+      
+      {/* Support Section */}
+      <section id="Support" className="px-6 sm:px-12 md:px-24 lg:px-40 w-full max-w-[1600px] mx-auto">
+        <div className="rounded-2xl border border-border p-6 sm:p-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4">{t.o1}</h2>
+          <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-3xl mb-6">{t.o2}</p>
+          <button
+            onClick={() => {
+            navigator.clipboard.writeText(cryptoAddress);
+            alert("USDT address copied!");
+          }}
+            className="px-5 py-3 border border-border rounded-xl font-semibold hover:border-primary/50 transition-all">{t.o3}</button>
+          <p className="text-xs text-zinc-500 mt-5">{t.o4}</p>
         </div>
       </section>
     </div>

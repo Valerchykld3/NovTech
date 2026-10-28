@@ -11,8 +11,9 @@
     "q5": "5. BaryCore Ground Model Test",
     "q6": "6. BaryCore Sky Model development (Cloud Version of the Ecosystem)",
 
-    "link": "GitHub",
-    "w": "This is a fully functional, open-source ecosystem. Anyone can grab the code, customize it, and spin up their own autonomous agents. This open-source foundation is yours to explore and build upon."
+    "w1": "BaryCore is a modular software ecosystem designed for remote computer management through Telegram. Built around an architecture of specialized agents, the system enables command execution and interaction with user's resources. The project includes two versions: Ground, designed for local operation, and Sky, which integrates cloud infrastructure. BaryCore aims to provide convenient access to a personal computer's capabilities regardless of the user's physical location.",
+    "w2": "This is a fully functional, open-source ecosystem. Anyone can grab the code, customize it, and spin up their own autonomous agents.",
+    "link": "GitHub"
   },
 
   "bcp1": {
