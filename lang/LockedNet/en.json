@@ -1,0 +1,12 @@
+{
+    "lnp0": {
+        "title": "LockedNet",
+        "stitle": "Decentralized Anti-Blackout Ecosystem",
+
+        "t1": "LockedNet was an ambitious attempt to develop a decentralized anti-blackout ecosystem capable of maintaining essential household functions independently of external power and communication infrastructure. The project involved system architecture design, low-power wireless communication concepts, embedded device planning, and local software development.",
+        "t2": "However, as development progressed, it became clear that the project's scope significantly exceeded the available resources and my experience at the time. The lack of a sufficiently defined MVP also led to repeated architectural revisions and shifting priorities. Rather than continuing development without a clear path toward a validated solution, I decided to discontinue the project and focus on smaller, more achievable engineering challenges.",
+        "t3": "Although LockedNet never reached the stage of a fully integrated and tested system, it provided valuable experience in system design, technical feasibility assessment, and project scope management.",
+        "t4": "The original documentation remains available as an archive of the development process. It includes conceptual designs and experimental implementations that should not be interpreted as a validated, production-ready system.",
+        "link": "LockedNet web site"
+    }
+}

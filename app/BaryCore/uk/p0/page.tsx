@@ -40,6 +40,10 @@ export default function Home() {
             </section>
 
             <section id="GitHub" className="flex flex-col gap-6">
+                <div className="relative w-full aspect-video my-2">
+                    <Image
+                        src="/bc2.png" alt="BaryCore" fill className="object-contain"/>
+                </div>
                 <p className="text-lg sm:text-xl text-foreground/80 leading-relaxed font-medium">{t.w1}</p>
                 <Link 
                         href="https://github.com/Valerchykld3/BaryCore"
