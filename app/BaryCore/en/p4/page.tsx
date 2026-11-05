@@ -99,6 +99,13 @@ export default function Home() {
                 </div>
             </section>
 
+            <section id="Ch2.5" className="flex flex-col gap-6 mt-4">
+                <h2 className="text-2xl sm:text-3xl font-semibold text-primary border-b border-border pb-2 tracking-tight">{t.n02}</h2>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.s1}</p>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.s2}</p>
+                <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.s3}</p>
+            </section>
+
             <section id="Ch3" className="flex flex-col gap-6 mt-4">
                 <h2 className="text-2xl sm:text-3xl font-semibold text-primary border-b border-border pb-2 tracking-tight">{t.n3}</h2>
                 <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">{t.t6}</p>
