@@ -42,6 +42,9 @@ export default function Home() {
                                 <Link href="#Ch2" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a3}</Link>
                             </li>
                             <li>
+                                <Link href="#Ch2.5" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a03}</Link>
+                            </li>
+                            <li>
                                 <Link href="#Ch3" className="text-18px font-semibold text-primary hover:underline w-fit transition-all">&rarr; {t.a4}</Link>
                             </li>
                             <li>
